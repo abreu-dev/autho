@@ -18,7 +18,7 @@ namespace Autho.Principal
         {
             if (_profileRepository.ExistsName(Guid.Empty, creationDto.Name))
             {
-                return new Result(ResultType.Failure, new ResultError("AlreadyUsed", "Already Used", AuthoResource.NameAlreadyInUse));
+                return new Result(ResultType.Failure, new ResultError("AlreadyUsed", "Already Used", string.Format(AuthoResource.NameAlreadyInUse, creationDto.Name)));
             }
 
             var resultPermission = ValidatePermissions(creationDto.Permissions);
@@ -40,7 +40,7 @@ namespace Autho.Principal
         {
             if (_profileRepository.ExistsName(id, creationDto.Name))
             {
-                return new Result(ResultType.Failure, new ResultError("AlreadyUsed", "Already Used", AuthoResource.NameAlreadyInUse));
+                return new Result(ResultType.Failure, new ResultError("AlreadyUsed", "Already Used", string.Format(AuthoResource.NameAlreadyInUse, creationDto.Name)));
             }
 
             var resultPermission = ValidatePermissions(creationDto.Permissions);

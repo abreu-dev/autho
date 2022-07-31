@@ -124,7 +124,7 @@
     <value>O nome de usuário ou senha informado é inválido.</value>
   </data>
   <data name="NameAlreadyInUse" xml:space="preserve">
-    <value>Nome já utilizado.</value>
+    <value>Nome '{0}' já utilizado.</value>
   </data>
   <data name="PermissionNotFound" xml:space="preserve">
     <value>Permissão '{0}' não foi encontrada.</value>

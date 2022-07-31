@@ -79,7 +79,7 @@ namespace Autho.Infra.CrossCutting.Globalization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name already in use..
+        ///   Looks up a localized string similar to Name &apos;{0}&apos; already in use..
         /// </summary>
         public static string NameAlreadyInUse {
             get {
