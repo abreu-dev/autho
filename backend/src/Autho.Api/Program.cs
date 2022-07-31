@@ -1,6 +1,8 @@
 using Autho.Api;
 using Autho.Api.Configurations;
 using Autho.Principal;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +34,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseMiddleware<JwtMiddleware>();
+app.UseMiddleware<GlobalizationMiddleware>();
 
 app.MapControllers();
 

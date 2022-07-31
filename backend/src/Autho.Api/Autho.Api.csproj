@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Autho.Principal\Autho.Principal.csproj" />
+    <ProjectReference Include="..\Autho.Infra.CrossCutting.IoC\Autho.Infra.CrossCutting.IoC.csproj" />
   </ItemGroup>
 
 </Project>

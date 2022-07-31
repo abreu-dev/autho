@@ -39,7 +39,8 @@ namespace Autho.Api.Controllers
                         Id = result.Item.Id,
                         Name = result.Item.Name,
                         Email = result.Item.Email,
-                        Login = result.Item.Login
+                        Login = result.Item.Login,
+                        Language = result.Item.Language.GetEnumDisplayDescription() ?? ""
                     }
                 }
             });
