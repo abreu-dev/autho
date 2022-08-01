@@ -1,6 +1,7 @@
 using Autho.Api.Configurations;
 using Autho.Api.Middlewares;
 using Autho.Infra.Data.Seed;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDependencyInjectionConfiguration();
 builder.Services.AddDatabaseConfiguration(builder.Configuration);
 builder.Services.AddJwtConfiguration(builder.Configuration);
+builder.Services.AddMediatR(typeof(Program));
 
 var app = builder.Build();
 

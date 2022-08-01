@@ -61,16 +61,16 @@ namespace Autho.Infra.CrossCutting.Globalization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permission &apos;{0}&apos; is duplicated..
+        ///   Looks up a localized string similar to The field &apos;{0}&apos; must be unique..
         /// </summary>
-        public static string DuplicatedPermission {
+        public static string FieldMustBeUnique {
             get {
-                return ResourceManager.GetString("DuplicatedPermission", resourceCulture);
+                return ResourceManager.GetString("FieldMustBeUnique", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Informed username or password is invalid..
+        ///   Looks up a localized string similar to The informed username or password is incorrect..
         /// </summary>
         public static string LoginFailed {
             get {
@@ -79,29 +79,29 @@ namespace Autho.Infra.CrossCutting.Globalization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name &apos;{0}&apos; already in use..
+        ///   Looks up a localized string similar to Name.
         /// </summary>
-        public static string NameAlreadyInUse {
+        public static string Name {
             get {
-                return ResourceManager.GetString("NameAlreadyInUse", resourceCulture);
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permission &apos;{0}&apos; was not found..
+        ///   Looks up a localized string similar to The informed &apos;{0}&apos; was not found..
         /// </summary>
-        public static string PermissionNotFound {
+        public static string NotFound {
             get {
-                return ResourceManager.GetString("PermissionNotFound", resourceCulture);
+                return ResourceManager.GetString("NotFound", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profile was not found..
+        ///   Looks up a localized string similar to Profile.
         /// </summary>
-        public static string ProfileNotFound {
+        public static string Profile {
             get {
-                return ResourceManager.GetString("ProfileNotFound", resourceCulture);
+                return ResourceManager.GetString("Profile", resourceCulture);
             }
         }
     }
