@@ -1,4 +1,4 @@
-﻿using Autho.Application.Interfaces;
+﻿using Autho.Application.Services.Interfaces;
 using Autho.Domain.Entities;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;

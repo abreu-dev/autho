@@ -1,5 +1,5 @@
 ﻿using Autho.Application.Contracts;
-using Autho.Application.Interfaces;
+using Autho.Application.Services.Interfaces;
 using Autho.Domain.Core.MediatorHandler;
 using Autho.Domain.Core.Notifications;
 using Autho.Domain.Entities;

@@ -1,6 +1,6 @@
 ﻿using Autho.Application.Contracts;
 
-namespace Autho.Application.Interfaces
+namespace Autho.Application.Services.Interfaces
 {
     public interface IProfileAppService
     {

@@ -1,6 +1,6 @@
 ﻿using Autho.Application.Contracts;
 
-namespace Autho.Application.Interfaces
+namespace Autho.Application.Queries.Interfaces
 {
     public interface IProfileAppQuery
     {

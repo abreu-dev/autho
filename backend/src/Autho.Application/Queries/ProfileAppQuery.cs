@@ -1,8 +1,8 @@
 ﻿using Autho.Application.Contracts;
-using Autho.Application.Interfaces;
+using Autho.Application.Queries.Interfaces;
 using Autho.Domain.Repositories;
 
-namespace Autho.Application.Services
+namespace Autho.Application.Queries
 {
     public class ProfileAppQuery : IProfileAppQuery
     {

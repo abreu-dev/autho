@@ -1,7 +1,7 @@
 ﻿using Autho.Domain.Core.Validation;
 using Autho.Domain.Entities;
 
-namespace Autho.Application.Interfaces
+namespace Autho.Application.Services.Interfaces
 {
     public interface IAuthenticationService
     {

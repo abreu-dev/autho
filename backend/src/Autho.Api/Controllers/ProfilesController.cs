@@ -1,6 +1,7 @@
 ﻿using Autho.Api.Filters;
 using Autho.Application.Contracts;
-using Autho.Application.Interfaces;
+using Autho.Application.Queries.Interfaces;
+using Autho.Application.Services.Interfaces;
 using Autho.Core.Enums;
 using Autho.Domain.Core.Notifications;
 using MediatR;
