@@ -1,4 +1,4 @@
-﻿using Autho.Principal;
+﻿using Autho.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace Autho.Api.Configurations

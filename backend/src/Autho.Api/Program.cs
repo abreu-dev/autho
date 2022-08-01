@@ -1,8 +1,6 @@
-using Autho.Api;
 using Autho.Api.Configurations;
-using Autho.Principal;
-using Microsoft.AspNetCore.Localization;
-using System.Globalization;
+using Autho.Api.Middlewares;
+using Autho.Infra.Data.Seed;
 
 var builder = WebApplication.CreateBuilder(args);
 

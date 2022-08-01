@@ -1,10 +1,11 @@
-﻿using Autho.Principal;
+﻿using Autho.Application;
+using Autho.Domain.Repositories;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
-namespace Autho.Api
+namespace Autho.Api.Middlewares
 {
     public class JwtMiddleware
     {

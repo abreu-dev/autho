@@ -1,4 +1,4 @@
-﻿namespace Autho.Principal
+﻿namespace Autho.Application.Contracts
 {
     public class ProfilePermissionCreationDto
     {

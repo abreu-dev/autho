@@ -1,4 +1,7 @@
-﻿namespace Autho.Principal
+﻿using Autho.Domain.Core.Validation;
+using Autho.Domain.Entities;
+
+namespace Autho.Application.Interfaces
 {
     public interface IAuthenticationService
     {

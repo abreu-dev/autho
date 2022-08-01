@@ -1,10 +1,12 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Autho.Application.Interfaces;
+using Autho.Domain.Entities;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Autho.Principal
+namespace Autho.Application.Services
 {
     public class TokenService : ITokenService
     {

@@ -1,4 +1,4 @@
-﻿using Autho.Principal;
+﻿using Autho.Infra.CrossCutting.IoC;
 
 namespace Autho.Api.Configurations
 {

@@ -1,4 +1,7 @@
-﻿namespace Autho.Principal
+﻿using Autho.Domain.Core.Entities;
+using Autho.Infra.Data.Core.Entities;
+
+namespace Autho.Infra.Data.Core.Adapter
 {
     public interface IDataAdapter<TBaseDomain, TBaseData>
         where TBaseDomain : BaseDomain

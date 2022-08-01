@@ -1,4 +1,6 @@
-﻿namespace Autho.Principal
+﻿using Autho.Application.Contracts;
+
+namespace Autho.Application.Interfaces
 {
     public interface IProfileAppQuery
     {

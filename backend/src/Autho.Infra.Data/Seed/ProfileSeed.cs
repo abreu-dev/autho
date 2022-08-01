@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Autho.Infra.Data.Core.Repositories;
+using Autho.Infra.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace Autho.Principal
+namespace Autho.Infra.Data.Seed
 {
     public static class ProfileSeed
     {

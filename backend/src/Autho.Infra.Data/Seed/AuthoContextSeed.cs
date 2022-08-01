@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Autho.Infra.Data.Context;
+using Autho.Infra.Data.Core.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Autho.Principal
+namespace Autho.Infra.Data.Seed
 {
     public static class AuthoContextSeed
     {

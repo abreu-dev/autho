@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-namespace Autho.Principal
+namespace Autho.Core.Extensions
 {
     public static class EnumExtensions
     {

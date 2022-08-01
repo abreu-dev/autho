@@ -1,4 +1,6 @@
-﻿namespace Autho.Principal
+﻿using Autho.Domain.Core.Entities;
+
+namespace Autho.Domain.Entities
 {
     public class ProfileDomain : BaseDomain
     {

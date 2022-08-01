@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Autho.Infra.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Autho.Principal
+namespace Autho.Infra.Data.Mappings
 {
     public class PermissionMapping : IEntityTypeConfiguration<PermissionData>
     {

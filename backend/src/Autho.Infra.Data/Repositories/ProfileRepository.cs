@@ -1,6 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Autho.Domain.Entities;
+using Autho.Domain.Repositories;
+using Autho.Infra.Data.Adapters.Interfaces;
+using Autho.Infra.Data.Context;
+using Autho.Infra.Data.Core.Repositories;
+using Autho.Infra.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace Autho.Principal
+namespace Autho.Infra.Data.Repositories
 {
     public class ProfileRepository : Repository<ProfileDomain, ProfileData>, IProfileRepository
     {

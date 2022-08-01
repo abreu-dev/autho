@@ -1,4 +1,6 @@
-﻿namespace Autho.Principal
+﻿using Autho.Domain.Entities;
+
+namespace Autho.Application.Interfaces
 {
     public interface ITokenService
     {

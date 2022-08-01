@@ -1,4 +1,4 @@
-﻿namespace Autho.Principal
+﻿namespace Autho.Domain.Core.Data
 {
     public interface IUnitOfWork
     {

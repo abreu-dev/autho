@@ -1,4 +1,7 @@
-﻿namespace Autho.Principal
+﻿using Autho.Application.Contracts;
+using Autho.Domain.Core.Validation;
+
+namespace Autho.Application.Interfaces
 {
     public interface IProfileAppService
     {

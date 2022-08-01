@@ -1,8 +1,10 @@
-﻿using Autho.Principal;
+﻿using Autho.Core.Enums;
+using Autho.Core.Extensions;
+using Autho.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Autho.Api
+namespace Autho.Api.Filters
 {
     public class AuthorizationRequirementAttribute : TypeFilterAttribute
     {

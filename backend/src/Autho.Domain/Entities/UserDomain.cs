@@ -1,6 +1,7 @@
-﻿using Autho.Infra.CrossCutting.Globalization;
+﻿using Autho.Domain.Core.Entities;
+using Autho.Infra.CrossCutting.Globalization;
 
-namespace Autho.Principal
+namespace Autho.Domain.Entities
 {
     public class UserDomain : BaseDomain
     {

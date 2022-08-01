@@ -1,4 +1,7 @@
-﻿namespace Autho.Principal
+﻿using Autho.Domain.Core.Data;
+using Autho.Infra.Data.Core.Entities;
+
+namespace Autho.Infra.Data.Core.Repositories
 {
     public interface IGenericRepository
     {

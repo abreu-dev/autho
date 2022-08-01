@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Autho.Domain.Core.Data;
+using Autho.Infra.Data.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Autho.Principal
+namespace Autho.Infra.Data.Core.Context
 {
     public interface IBaseContext : IUnitOfWork
     {

@@ -1,4 +1,6 @@
-﻿namespace Autho.Principal
+﻿using Autho.Domain.Core.Entities;
+
+namespace Autho.Domain.Core.Data
 {
     public interface IRepository<TBaseDomain> where TBaseDomain : BaseDomain
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Autho.Principal
+namespace Autho.Core.Enums
 {
     public enum Permission
     {

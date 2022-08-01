@@ -1,6 +1,15 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Autho.Application.Interfaces;
+using Autho.Application.Services;
+using Autho.Domain.Repositories;
+using Autho.Infra.Data.Adapters.Implementations;
+using Autho.Infra.Data.Adapters.Interfaces;
+using Autho.Infra.Data.Context;
+using Autho.Infra.Data.Core.Context;
+using Autho.Infra.Data.Core.Repositories;
+using Autho.Infra.Data.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Autho.Principal
+namespace Autho.Infra.CrossCutting.IoC
 {
     public static class NativeInjectorBootStrapper
     {

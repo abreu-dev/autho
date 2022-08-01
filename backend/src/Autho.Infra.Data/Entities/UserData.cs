@@ -1,6 +1,7 @@
 ﻿using Autho.Infra.CrossCutting.Globalization;
+using Autho.Infra.Data.Core.Entities;
 
-namespace Autho.Principal
+namespace Autho.Infra.Data.Entities
 {
     public class UserData : BaseData
     {

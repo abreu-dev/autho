@@ -1,4 +1,4 @@
-﻿namespace Autho.Principal
+﻿namespace Autho.Domain.Core.Entities
 {
     public abstract class BaseDomain
     {

@@ -1,6 +1,10 @@
-﻿using Autho.Infra.CrossCutting.Globalization.Resources;
+﻿using Autho.Application.Interfaces;
+using Autho.Domain.Core.Validation;
+using Autho.Domain.Entities;
+using Autho.Domain.Repositories;
+using Autho.Infra.CrossCutting.Globalization.Resources;
 
-namespace Autho.Principal
+namespace Autho.Application.Services
 {
     public class AuthenticationService : IAuthenticationService
     {
@@ -17,7 +21,7 @@ namespace Autho.Principal
 
             if (user == null)
             {
-                return new Result<UserDomain>(ResultType.Failure, 
+                return new Result<UserDomain>(ResultType.Failure,
                     new ResultError("LoginFailed", "Login Failed", AuthoResource.LoginFailed));
             }
 

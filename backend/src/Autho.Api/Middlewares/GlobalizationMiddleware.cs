@@ -1,7 +1,8 @@
-﻿using Autho.Principal;
+﻿using Autho.Core.Extensions;
+using Autho.Domain.Entities;
 using System.Globalization;
 
-namespace Autho.Api
+namespace Autho.Api.Middlewares
 {
     public class GlobalizationMiddleware
     {

@@ -1,4 +1,7 @@
-﻿using Autho.Principal;
+﻿using Autho.Application.Contracts;
+using Autho.Application.Interfaces;
+using Autho.Core.Extensions;
+using Autho.Domain.Core.Validation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,7 +12,7 @@ namespace Autho.Api.Controllers
         private readonly IAuthenticationService _authenticationService;
         private readonly ITokenService _tokenService;
 
-        public UsersController(IAuthenticationService authenticationService, 
+        public UsersController(IAuthenticationService authenticationService,
                                ITokenService tokenService)
         {
             _authenticationService = authenticationService;

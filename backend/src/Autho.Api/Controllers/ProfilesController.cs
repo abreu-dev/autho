@@ -1,4 +1,8 @@
-﻿using Autho.Principal;
+﻿using Autho.Api.Filters;
+using Autho.Application.Contracts;
+using Autho.Application.Interfaces;
+using Autho.Core.Enums;
+using Autho.Domain.Core.Validation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Autho.Api.Controllers
@@ -8,7 +12,7 @@ namespace Autho.Api.Controllers
         private readonly IProfileAppService _profileAppService;
         private readonly IProfileAppQuery _profileAppQuery;
 
-        public ProfilesController(IProfileAppService profileAppService, 
+        public ProfilesController(IProfileAppService profileAppService,
                                   IProfileAppQuery profileAppQuery)
         {
             _profileAppService = profileAppService;

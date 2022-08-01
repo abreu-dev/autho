@@ -1,4 +1,9 @@
-﻿namespace Autho.Principal
+﻿using Autho.Core.Enums;
+using Autho.Core.Extensions;
+using Autho.Infra.Data.Core.Repositories;
+using Autho.Infra.Data.Entities;
+
+namespace Autho.Infra.Data.Seed
 {
     public static class PermissionSeed
     {

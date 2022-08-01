@@ -1,13 +1,18 @@
-﻿using Autho.Infra.CrossCutting.Globalization.Resources;
+﻿using Autho.Application.Contracts;
+using Autho.Application.Interfaces;
+using Autho.Domain.Core.Validation;
+using Autho.Domain.Entities;
+using Autho.Domain.Repositories;
+using Autho.Infra.CrossCutting.Globalization.Resources;
 
-namespace Autho.Principal
+namespace Autho.Application.Services
 {
     public class ProfileAppService : IProfileAppService
     {
         private readonly IProfileRepository _profileRepository;
         private readonly IPermissionRepository _permissionRepository;
 
-        public ProfileAppService(IProfileRepository profileRepository, 
+        public ProfileAppService(IProfileRepository profileRepository,
                                  IPermissionRepository permissionRepository)
         {
             _profileRepository = profileRepository;

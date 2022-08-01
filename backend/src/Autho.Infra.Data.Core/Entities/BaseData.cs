@@ -1,4 +1,4 @@
-﻿namespace Autho.Principal
+﻿namespace Autho.Infra.Data.Core.Entities
 {
     public abstract class BaseData
     {

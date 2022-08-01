@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Autho.Infra.Data.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Reflection;
 
-namespace Autho.Principal
+namespace Autho.Infra.Data.Context
 {
     public class AuthoContext : DbContext, IAuthoContext
     {

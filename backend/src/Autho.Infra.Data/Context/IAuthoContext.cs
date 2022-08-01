@@ -1,6 +1,6 @@
-﻿using Autho.Principal;
+﻿using Autho.Infra.Data.Core.Context;
 
-namespace Autho.Principal
+namespace Autho.Infra.Data.Context
 {
     public interface IAuthoContext : IBaseContext
     {

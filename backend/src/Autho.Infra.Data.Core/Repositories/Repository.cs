@@ -1,6 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Autho.Domain.Core.Data;
+using Autho.Domain.Core.Entities;
+using Autho.Infra.Data.Core.Adapter;
+using Autho.Infra.Data.Core.Context;
+using Autho.Infra.Data.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace Autho.Principal
+namespace Autho.Infra.Data.Core.Repositories
 {
     public abstract class Repository<TBaseDomain, TBaseData> : IRepository<TBaseDomain>
         where TBaseDomain : BaseDomain
@@ -10,7 +15,7 @@ namespace Autho.Principal
         protected readonly IDataAdapter<TBaseDomain, TBaseData> _adapter;
         private readonly DbSet<TBaseData> _dbSet;
 
-        protected Repository(IBaseContext context, 
+        protected Repository(IBaseContext context,
                              IDataAdapter<TBaseDomain, TBaseData> adapter)
         {
             _context = context;
