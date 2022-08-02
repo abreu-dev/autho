@@ -49,8 +49,19 @@ namespace Autho.Application.Services
 
         public async Task Update(Guid id, ProfileCreationDto creationDto)
         {
-            var profile = _profileRepository.GetWithPermissions(id);
-            if (profile == null)
+            var permissions = creationDto.Permissions.Select(x => new PermissionDomain(x.Id)).ToList();
+            var profile = new ProfileDomain(id, creationDto.Name, permissions);
+
+            if (!profile.IsValid(_profileValidation))
+            {
+                foreach (var error in profile.ValidationResult.Errors)
+                {
+                    await _mediator.RaiseNotification(new DomainNotification(error.ErrorCode, error.CustomState.ToString() ?? "", error.ErrorMessage));
+                }
+                return;
+            }
+
+            if (!_profileRepository.Exists(id))
             {
                 var message = string.Format(AuthoResource.NotFound, AuthoResource.Profile);
                 await _mediator.RaiseNotification(new DomainNotification("NotFound", "NotFound", message));
@@ -61,11 +72,6 @@ namespace Autho.Application.Services
             {
                 return;
             }
-
-            profile.UpdateName(creationDto.Name);
-
-            profile.ClearPermissions();
-            profile.AddPermissions(creationDto.Permissions.Select(x => new PermissionDomain(x.Id)).ToList());
 
             _profileRepository.UpdateProfile(profile);
             _profileRepository.UnitOfWork.Complete();

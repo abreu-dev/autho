@@ -43,6 +43,11 @@ namespace Autho.Infra.Data.Core.Repositories
             return _adapter.Transform(data);
         }
 
+        public bool Exists(Guid id)
+        {
+            return _dbSet.AsNoTracking().Any(x => x.Id == id);
+        }
+
         public void Add(TBaseDomain domain)
         {
             var data = _adapter.Transform(domain);

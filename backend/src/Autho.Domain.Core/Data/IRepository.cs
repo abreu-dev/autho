@@ -9,6 +9,8 @@ namespace Autho.Domain.Core.Data
         IEnumerable<TBaseDomain> GetAll();
         TBaseDomain? GetById(Guid id);
 
+        bool Exists(Guid id);
+
         void Add(TBaseDomain domain);
         void Update(TBaseDomain domain);
         void Delete(Guid id);
