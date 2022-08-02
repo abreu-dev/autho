@@ -5,6 +5,7 @@ using Autho.Application.Services.Interfaces;
 using Autho.Domain.Core.MediatorHandler;
 using Autho.Domain.Core.Notifications;
 using Autho.Domain.Repositories;
+using Autho.Domain.Validations.Interfaces;
 using Autho.Infra.Data.Adapters.Implementations;
 using Autho.Infra.Data.Adapters.Interfaces;
 using Autho.Infra.Data.Context;
@@ -35,6 +36,9 @@ namespace Autho.Infra.CrossCutting.IoC
 
             // Domain - Notification
             services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
+
+            // Domain - Validations
+            services.AddScoped<IProfileValidation, ProfileValidation>();
 
             // Infra - Data - Adapters
             services.AddScoped<IPermissionDataAdapter, PermissionDataAdapter>();

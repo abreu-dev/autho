@@ -1,4 +1,7 @@
 ﻿using Autho.Domain.Core.Entities;
+using Autho.Domain.Validations.Interfaces;
+using FluentValidation;
+using FluentValidation.Results;
 
 namespace Autho.Domain.Entities
 {
@@ -49,6 +52,14 @@ namespace Autho.Domain.Entities
         private bool ExistsPermission(PermissionDomain permission)
         {
             return Permissions.Any(x => x.Id == permission.Id);
+        }
+
+        public ValidationResult ValidationResult { get; private set; }
+
+        public bool IsValid(IProfileValidation validation)
+        {
+            ValidationResult = validation.Validate(this);
+            return ValidationResult.IsValid;
         }
     }
 }

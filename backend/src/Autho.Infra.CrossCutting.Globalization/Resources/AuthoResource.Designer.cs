@@ -61,7 +61,7 @@ namespace Autho.Infra.CrossCutting.Globalization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The field &apos;{0}&apos; must be unique..
+        ///   Looks up a localized string similar to The field &apos;{0}&apos; must be unique.
         /// </summary>
         public static string FieldMustBeUnique {
             get {
@@ -70,11 +70,20 @@ namespace Autho.Infra.CrossCutting.Globalization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The informed username or password is incorrect..
+        ///   Looks up a localized string similar to The informed username or password is incorrect.
         /// </summary>
         public static string LoginFailed {
             get {
                 return ResourceManager.GetString("LoginFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The field &apos;{0}&apos; must be informed.
+        /// </summary>
+        public static string MissingValue {
+            get {
+                return ResourceManager.GetString("MissingValue", resourceCulture);
             }
         }
         
@@ -88,7 +97,7 @@ namespace Autho.Infra.CrossCutting.Globalization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The informed &apos;{0}&apos; was not found..
+        ///   Looks up a localized string similar to The informed &apos;{0}&apos; was not found.
         /// </summary>
         public static string NotFound {
             get {

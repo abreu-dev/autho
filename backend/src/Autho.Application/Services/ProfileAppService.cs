@@ -4,6 +4,7 @@ using Autho.Domain.Core.MediatorHandler;
 using Autho.Domain.Core.Notifications;
 using Autho.Domain.Entities;
 using Autho.Domain.Repositories;
+using Autho.Domain.Validations.Interfaces;
 using Autho.Infra.CrossCutting.Globalization.Resources;
 
 namespace Autho.Application.Services
@@ -11,12 +12,15 @@ namespace Autho.Application.Services
     public class ProfileAppService : IProfileAppService
     {
         private readonly IProfileRepository _profileRepository;
+        private readonly IProfileValidation _profileValidation;
         private readonly IMediatorHandler _mediator;
 
-        public ProfileAppService(IProfileRepository profileRepository, 
+        public ProfileAppService(IProfileRepository profileRepository,
+                                 IProfileValidation profileValidation,
                                  IMediatorHandler mediator)
         {
             _profileRepository = profileRepository;
+            _profileValidation = profileValidation;
             _mediator = mediator;
         }
 
@@ -25,11 +29,19 @@ namespace Autho.Application.Services
             var permissions = creationDto.Permissions.Select(x => new PermissionDomain(x.Id)).ToList();
             var profile = new ProfileDomain(creationDto.Name, permissions);
 
-            if (!await IsNameValid(profile.Id, creationDto.Name))
+            if (!profile.IsValid(_profileValidation))
             {
+                foreach (var error in profile.ValidationResult.Errors)
+                {
+                    await _mediator.RaiseNotification(new DomainNotification(error.ErrorCode, error.CustomState.ToString() ?? "", error.ErrorMessage));
+                }
                 return;
             }
 
+            if (!await IsNameInUse(profile.Id, creationDto.Name))
+            {
+                return;
+            }
 
             _profileRepository.Add(profile);
             _profileRepository.UnitOfWork.Complete();
@@ -45,7 +57,7 @@ namespace Autho.Application.Services
                 return;
             }
 
-            if (!await IsNameValid(profile.Id, creationDto.Name))
+            if (!await IsNameInUse(profile.Id, creationDto.Name))
             {
                 return;
             }
@@ -67,7 +79,7 @@ namespace Autho.Application.Services
             return Task.CompletedTask;
         }
 
-        private async Task<bool> IsNameValid(Guid id, string name)
+        private async Task<bool> IsNameInUse(Guid id, string name)
         {
             if (_profileRepository.ExistsName(id, name))
             {
