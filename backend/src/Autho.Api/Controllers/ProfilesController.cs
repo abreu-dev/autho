@@ -1,6 +1,7 @@
 ﻿using Autho.Api.Filters;
 using Autho.Application.Contracts;
 using Autho.Application.Queries.Interfaces;
+using Autho.Application.Queries.Parameters;
 using Autho.Application.Services.Interfaces;
 using Autho.Core.Enums;
 using Autho.Domain.Core.Notifications;
@@ -23,9 +24,9 @@ namespace Autho.Api.Controllers
         }
 
         [HttpGet, Route("api/profiles"), AuthorizationRequirement(Permission.PermissionProfileView)]
-        public IActionResult Get()
+        public IActionResult Get([FromQuery] ProfileParameters parameters)
         {
-            return Ok(_profileAppQuery.GetAll());
+            return Ok(_profileAppQuery.GetPagedProfiles(parameters));
         }
 
         [HttpPost, Route("api/profiles"), AuthorizationRequirement(Permission.PermissionProfileInsert)]
