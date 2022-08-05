@@ -11,21 +11,21 @@ namespace Autho.Api.Controllers
 {
     public class UsersController : BaseController
     {
-        private readonly IAuthenticationService _authenticationService;
-        private readonly ITokenService _tokenService;
+        private readonly IAuthenticationAppService _authenticationAppService;
+        private readonly ITokenAppService _tokenAppService;
 
         public UsersController(INotificationHandler<DomainNotification> notifications,
-                               IAuthenticationService authenticationService,
-                               ITokenService tokenService) : base(notifications)
+                               IAuthenticationAppService authenticationAppService,
+                               ITokenAppService tokenAppService) : base(notifications)
         {
-            _authenticationService = authenticationService;
-            _tokenService = tokenService;
+            _authenticationAppService = authenticationAppService;
+            _tokenAppService = tokenAppService;
         }
 
         [HttpPost, Route("api/users/login"), AllowAnonymous]
         public IActionResult Login([FromBody] LoginDto loginDto)
         {
-            var result = _authenticationService.Authenticate(loginDto.Login, loginDto.Password);
+            var result = _authenticationAppService.Authenticate(loginDto.Login, loginDto.Password);
 
             if (result.Type == ResultType.Failure || result.Item == null)
             {
@@ -39,7 +39,7 @@ namespace Autho.Api.Controllers
             {
                 user = new LoginResultDto()
                 {
-                    Token = _tokenService.GenerateAuthenticationToken(result.Item),
+                    Token = _tokenAppService.GenerateAuthenticationToken(result.Item),
                     User = new UserDto()
                     {
                         Id = result.Item.Id,

@@ -30,10 +30,12 @@ namespace Autho.Infra.CrossCutting.IoC
 
             // Application - AppQueries
             services.AddScoped<IProfileAppQuery, ProfileAppQuery>();
+            services.AddScoped<IPermissionAppQuery, PermissionAppQuery>();
 
             // Application - Services
-            services.AddScoped<IAuthenticationService, AuthenticationService>();
-            services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IAuthenticationAppService, AuthenticationAppService>();
+            services.AddScoped<ITokenAppService, TokenAppService>();
+            services.AddScoped<IHealthAppService, HealthAppService>();
 
             // Domain - Mediator
             services.AddScoped<IMediatorHandler, MediatorHandler>();

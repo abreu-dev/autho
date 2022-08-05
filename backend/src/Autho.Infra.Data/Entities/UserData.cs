@@ -20,6 +20,7 @@ namespace Autho.Infra.Data.Entities
         public static int PasswordMaxLength => 100;
 
         public Language Language { get; set; }
+        public DateTime? LastAccess { get; set; }
 
         public virtual ICollection<UserProfileData> Profiles { get; set; }
     }

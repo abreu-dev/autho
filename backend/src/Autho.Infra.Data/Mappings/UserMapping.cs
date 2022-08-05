@@ -28,6 +28,8 @@ namespace Autho.Infra.Data.Mappings
 
             builder.Property(x => x.Language)
                 .IsRequired();
+
+            builder.Property(x => x.LastAccess);
         }
     }
 }

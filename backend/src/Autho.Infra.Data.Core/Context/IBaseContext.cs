@@ -7,6 +7,8 @@ namespace Autho.Infra.Data.Core.Context
 {
     public interface IBaseContext : IUnitOfWork
     {
+        bool IsAvailable();
+
         DbSet<TBaseData> GetDbSet<TBaseData>() where TBaseData : BaseData;
         EntityEntry<TBaseData> GetDbEntry<TBaseData>(TBaseData data) where TBaseData : BaseData;
         IQueryable<TBaseData> Query<TBaseData>() where TBaseData : BaseData;

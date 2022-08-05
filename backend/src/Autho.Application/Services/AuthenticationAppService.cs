@@ -6,11 +6,11 @@ using Autho.Infra.CrossCutting.Globalization.Resources;
 
 namespace Autho.Application.Services
 {
-    public class AuthenticationService : IAuthenticationService
+    public class AuthenticationAppService : IAuthenticationAppService
     {
         private readonly IUserRepository _userRepository;
 
-        public AuthenticationService(IUserRepository userRepository)
+        public AuthenticationAppService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
@@ -25,6 +25,7 @@ namespace Autho.Application.Services
                     new ResultError("LoginFailed", "Login Failed", AuthoResource.LoginFailed));
             }
 
+            _userRepository.UpdateLastAccess(user.Id);
             return new Result<UserDomain>(user, ResultType.Success);
         }
     }

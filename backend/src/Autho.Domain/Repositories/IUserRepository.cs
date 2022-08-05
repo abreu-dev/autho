@@ -7,5 +7,7 @@ namespace Autho.Domain.Repositories
     {
         UserDomain? GetByLoginAndPassword(string login, string password);
         UserDomain? GetWithPermissions(Guid id);
+
+        void UpdateLastAccess(Guid id);
     }
 }

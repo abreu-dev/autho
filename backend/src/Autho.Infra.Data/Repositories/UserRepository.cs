@@ -1,4 +1,5 @@
-﻿using Autho.Domain.Entities;
+﻿using Autho.Core.Providers.Interfaces;
+using Autho.Domain.Entities;
 using Autho.Domain.Repositories;
 using Autho.Infra.Data.Adapters.Interfaces;
 using Autho.Infra.Data.Context;
@@ -10,10 +11,14 @@ namespace Autho.Infra.Data.Repositories
 {
     public class UserRepository : Repository<UserDomain, UserData>, IUserRepository
     {
+        private readonly IDateTimeProvider _dateTimeProvider;
+
         public UserRepository(IAuthoContext context,
-                              IUserDataAdapter adapter)
+                              IUserDataAdapter adapter,
+                              IDateTimeProvider dateTimeProvider)
             : base(context, adapter)
         {
+            _dateTimeProvider = dateTimeProvider;
         }
 
         public UserDomain? GetByLoginAndPassword(string login, string password)
@@ -46,6 +51,18 @@ namespace Autho.Infra.Data.Repositories
             }
 
             return _adapter.Transform(user);
+        }
+
+        public void UpdateLastAccess(Guid id)
+        {
+            var user = _context.Query<UserData>()
+                .FirstOrDefault(x => x.Id == id);
+
+            if (user != null)
+            {
+                user.LastAccess = _dateTimeProvider.UtcNow;
+                _context.Complete();
+            }
         }
     }
 }

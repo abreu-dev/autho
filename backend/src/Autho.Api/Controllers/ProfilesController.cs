@@ -23,13 +23,13 @@ namespace Autho.Api.Controllers
             _profileAppQuery = profileAppQuery;
         }
 
-        [HttpGet, Route("api/profiles"), AuthorizationRequirement(Permission.PermissionProfileView)]
+        [HttpGet, Route("api/profiles"), AuthorizationRequirement(Permission.ProfileView)]
         public IActionResult Get([FromQuery] ProfileParameters parameters)
         {
-            return Ok(_profileAppQuery.GetPagedProfiles(parameters));
+            return Ok(_profileAppQuery.GetPaged(parameters));
         }
 
-        [HttpPost, Route("api/profiles"), AuthorizationRequirement(Permission.PermissionProfileInsert)]
+        [HttpPost, Route("api/profiles"), AuthorizationRequirement(Permission.ProfileInsert)]
         public async Task<IActionResult> Post([FromBody] ProfileCreationDto creationDto)
         {
             await _profileAppService.Add(creationDto);
@@ -37,7 +37,7 @@ namespace Autho.Api.Controllers
             return CustomResponse("api/profiles");
         }
 
-        [HttpPut, Route("api/profiles/{id}"), AuthorizationRequirement(Permission.PermissionProfileUpdate)]
+        [HttpPut, Route("api/profiles/{id}"), AuthorizationRequirement(Permission.ProfileUpdate)]
         public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] ProfileCreationDto creationDto)
         {
             await _profileAppService.Update(id, creationDto);
@@ -45,7 +45,7 @@ namespace Autho.Api.Controllers
             return CustomResponse("api/profiles", id);
         }
 
-        [HttpDelete, Route("api/profiles/{id}"), AuthorizationRequirement(Permission.PermissionProfileDelete)]
+        [HttpDelete, Route("api/profiles/{id}"), AuthorizationRequirement(Permission.ProfileDelete)]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
             await _profileAppService.Remove(id);

@@ -3,7 +3,7 @@ using Autho.Domain.Entities;
 
 namespace Autho.Application.Services.Interfaces
 {
-    public interface IAuthenticationService
+    public interface IAuthenticationAppService
     {
         IResult<UserDomain> Authenticate(string login, string password);
     }

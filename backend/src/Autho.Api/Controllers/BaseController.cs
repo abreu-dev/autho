@@ -38,5 +38,10 @@ namespace Autho.Api.Controllers
         {
             return CustomResponse(string.Format("{0}/{1}", instance, id));
         }
+
+        protected IActionResult ServiceUnavailable(object value)
+        {
+            return StatusCode(StatusCodes.Status503ServiceUnavailable, value);
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace Autho.Application.Queries
             _context = context;
         }
 
-        public IPagedList<ProfileDto> GetPagedProfiles(IProfileParameters parameters)
+        public IPagedList<ProfileDto> GetPaged(IProfileParameters parameters)
         {
             var source = _context.Query<ProfileData>();
 

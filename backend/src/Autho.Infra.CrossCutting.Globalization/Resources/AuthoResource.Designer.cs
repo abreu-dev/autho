@@ -61,6 +61,15 @@ namespace Autho.Infra.CrossCutting.Globalization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The database is out of service.
+        /// </summary>
+        public static string DatabaseUnavailable {
+            get {
+                return ResourceManager.GetString("DatabaseUnavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The field &apos;{0}&apos; must be unique.
         /// </summary>
         public static string FieldMustBeUnique {

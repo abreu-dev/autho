@@ -2,7 +2,7 @@
 
 namespace Autho.Application.Services.Interfaces
 {
-    public interface ITokenService
+    public interface ITokenAppService
     {
         string GenerateAuthenticationToken(UserDomain user);
     }

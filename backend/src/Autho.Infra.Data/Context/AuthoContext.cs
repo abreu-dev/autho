@@ -25,6 +25,11 @@ namespace Autho.Infra.Data.Context
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
 
+        public bool IsAvailable()
+        {
+            return Database.CanConnect();
+        }
+
         public DbSet<TBaseData> GetDbSet<TBaseData>() where TBaseData : BaseData
         {
             return Set<TBaseData>();

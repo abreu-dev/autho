@@ -9,12 +9,12 @@ using System.Text;
 
 namespace Autho.Application.Services
 {
-    public class TokenService : ITokenService
+    public class TokenAppService : ITokenAppService
     {
         private readonly IDateTimeProvider _dateTimeProvider;
         private readonly AppSettings _appSettings;
 
-        public TokenService(IDateTimeProvider dateTimeProvider,
+        public TokenAppService(IDateTimeProvider dateTimeProvider,
                             IOptions<AppSettings> appSettings)
         {
             _dateTimeProvider = dateTimeProvider;

@@ -4,8 +4,8 @@ using Autho.Domain.Core.Data.Pagination.Interfaces;
 
 namespace Autho.Application.Queries.Interfaces
 {
-    public interface IProfileAppQuery
+    public interface IPermissionAppQuery
     {
-        IPagedList<ProfileDto> GetPaged(IProfileParameters parameters);
+        IPagedList<PermissionDto> GetPaged(IPermissionParameters parameters);
     }
 }
