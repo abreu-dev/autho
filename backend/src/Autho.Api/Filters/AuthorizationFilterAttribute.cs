@@ -1,6 +1,6 @@
 ﻿using Autho.Core.Enums;
 using Autho.Core.Extensions;
-using Autho.Domain.Entities;
+using Autho.Domain.Session.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -35,7 +35,8 @@ namespace Autho.Api.Filters
 
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            var user = (UserDomain?)context.HttpContext.Items["User"];
+            var sessionAccessor = context.HttpContext.RequestServices.GetRequiredService<ISessionAccessor>();
+            var user = sessionAccessor.User;
 
             if (user == null)
             {

@@ -1,5 +1,7 @@
-﻿using Autho.Domain.Core.Data;
+﻿using Autho.Core.Providers.Interfaces;
+using Autho.Domain.Core.Data;
 using Autho.Domain.Core.Entities;
+using Autho.Domain.Session.Interfaces;
 using Autho.Infra.Data.Core.Adapter;
 using Autho.Infra.Data.Core.Context;
 using Autho.Infra.Data.Core.Entities;
@@ -13,14 +15,16 @@ namespace Autho.Infra.Data.Core.Repositories
     {
         protected readonly IBaseContext _context;
         protected readonly IDataAdapter<TBaseDomain, TBaseData> _adapter;
+
         private readonly DbSet<TBaseData> _dbSet;
 
         protected Repository(IBaseContext context,
                              IDataAdapter<TBaseDomain, TBaseData> adapter)
         {
             _context = context;
-            _dbSet = _context.GetDbSet<TBaseData>();
             _adapter = adapter;
+
+            _dbSet = _context.GetDbSet<TBaseData>();
         }
 
         public IUnitOfWork UnitOfWork => _context;
@@ -57,11 +61,9 @@ namespace Autho.Infra.Data.Core.Repositories
         public void Update(TBaseDomain domain)
         {
             var data = _adapter.Transform(domain);
-            data.OnUpdate();
             _context.UpdateData(data);
 
             var entry = _context.GetDbEntry(data);
-
             if (entry != null)
             {
                 entry.Property(x => x.CreatedBy).IsModified = false;

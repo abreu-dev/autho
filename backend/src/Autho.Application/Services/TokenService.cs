@@ -1,4 +1,5 @@
 ﻿using Autho.Application.Services.Interfaces;
+using Autho.Core.Providers.Interfaces;
 using Autho.Domain.Entities;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -10,10 +11,13 @@ namespace Autho.Application.Services
 {
     public class TokenService : ITokenService
     {
+        private readonly IDateTimeProvider _dateTimeProvider;
         private readonly AppSettings _appSettings;
 
-        public TokenService(IOptions<AppSettings> appSettings)
+        public TokenService(IDateTimeProvider dateTimeProvider,
+                            IOptions<AppSettings> appSettings)
         {
+            _dateTimeProvider = dateTimeProvider;
             _appSettings = appSettings.Value;
         }
 
@@ -27,7 +31,7 @@ namespace Autho.Application.Services
                 {
                     new Claim("Id", user.Id.ToString())
                 }),
-                Expires = DateTime.UtcNow.AddHours(_appSettings.Expires),
+                Expires = _dateTimeProvider.UtcNow.AddHours(_appSettings.Expires),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);

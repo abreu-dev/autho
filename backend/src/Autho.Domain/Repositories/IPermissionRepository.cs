@@ -5,6 +5,5 @@ namespace Autho.Domain.Repositories
 {
     public interface IPermissionRepository : IRepository<PermissionDomain>
     {
-        bool Exists(Guid id);
     }
 }

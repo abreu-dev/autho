@@ -15,7 +15,7 @@ namespace Autho.Api.Controllers
         private readonly IProfileAppService _profileAppService;
         private readonly IProfileAppQuery _profileAppQuery;
 
-        public ProfilesController(INotificationHandler<DomainNotification> notifications, 
+        public ProfilesController(INotificationHandler<DomainNotification> notifications,
                                   IProfileAppService profileAppService,
                                   IProfileAppQuery profileAppQuery) : base(notifications)
         {

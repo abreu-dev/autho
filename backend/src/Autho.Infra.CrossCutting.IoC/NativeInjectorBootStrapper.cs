@@ -2,9 +2,13 @@
 using Autho.Application.Queries.Interfaces;
 using Autho.Application.Services;
 using Autho.Application.Services.Interfaces;
+using Autho.Core.Providers;
+using Autho.Core.Providers.Interfaces;
 using Autho.Domain.Core.MediatorHandler;
 using Autho.Domain.Core.Notifications;
 using Autho.Domain.Repositories;
+using Autho.Domain.Session;
+using Autho.Domain.Session.Interfaces;
 using Autho.Domain.Validations.Interfaces;
 using Autho.Infra.Data.Adapters.Implementations;
 using Autho.Infra.Data.Adapters.Interfaces;
@@ -55,6 +59,10 @@ namespace Autho.Infra.CrossCutting.IoC
             services.AddScoped<IProfileRepository, ProfileRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IGenericRepository, GenericRepository>();
+
+            // Providers
+            services.AddScoped<IDateTimeProvider, DateTimeProvider>();
+            services.AddScoped<ISessionAccessor, SessionAccessor>();
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Autho.Domain.Core.Entities;
 using Autho.Domain.Validations.Interfaces;
-using FluentValidation;
 using FluentValidation.Results;
 
 namespace Autho.Domain.Entities

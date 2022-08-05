@@ -1,5 +1,5 @@
 ﻿using Autho.Core.Extensions;
-using Autho.Domain.Entities;
+using Autho.Domain.Session.Interfaces;
 using System.Globalization;
 
 namespace Autho.Api.Middlewares
@@ -17,8 +17,8 @@ namespace Autho.Api.Middlewares
 
         public async Task Invoke(HttpContext context)
         {
-            var user = (UserDomain?)context.Items["User"];
-            var language = user?.Language.GetEnumDisplayDescription();
+            var sessionAccessor = context.RequestServices.GetRequiredService<ISessionAccessor>();
+            var language = sessionAccessor.User?.Language.GetEnumDisplayDescription();
 
             if (language == null)
             {

@@ -23,11 +23,11 @@ namespace Autho.Domain.Core.Data.Pagination
         private int _size = 10;
         public int Size
         {
-            get 
-            { 
-                return _size; 
+            get
+            {
+                return _size;
             }
-            set 
+            set
             {
                 if (value < 1)
                 {

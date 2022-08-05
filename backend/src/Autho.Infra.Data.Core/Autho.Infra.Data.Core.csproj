@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Autho.Domain.Core\Autho.Domain.Core.csproj" />
+    <ProjectReference Include="..\Autho.Domain\Autho.Domain.csproj" />
   </ItemGroup>
 
 </Project>

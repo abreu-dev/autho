@@ -30,7 +30,7 @@ namespace Autho.Application.Queries
             }
 
             var totalItems = source.Count();
-            
+
             var dtos = (from profile in source
                         select new ProfileDto()
                         {

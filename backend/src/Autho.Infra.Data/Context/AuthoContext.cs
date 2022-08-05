@@ -1,4 +1,6 @@
-﻿using Autho.Infra.Data.Core.Entities;
+﻿using Autho.Core.Providers.Interfaces;
+using Autho.Domain.Session.Interfaces;
+using Autho.Infra.Data.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Reflection;
@@ -7,7 +9,16 @@ namespace Autho.Infra.Data.Context
 {
     public class AuthoContext : DbContext, IAuthoContext
     {
-        public AuthoContext(DbContextOptions<AuthoContext> options) : base(options) { }
+        protected readonly IDateTimeProvider _dateTimeProvider;
+        protected readonly ISessionAccessor _sessionAccessor;
+
+        public AuthoContext(DbContextOptions<AuthoContext> options, 
+                            IDateTimeProvider dateTimeProvider, 
+                            ISessionAccessor sessionAccessor) : base(options)
+        {
+            _dateTimeProvider = dateTimeProvider;
+            _sessionAccessor = sessionAccessor;
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,11 +42,13 @@ namespace Autho.Infra.Data.Context
 
         public void AddData<TBaseData>(TBaseData data) where TBaseData : BaseData
         {
+            data.OnCreate(GetDate(), GetLogin());
             Add(data);
         }
 
         public void UpdateData<TBaseData>(TBaseData data) where TBaseData : BaseData
         {
+            data.OnUpdate(GetDate(), GetLogin());
             Update(data);
         }
 
@@ -51,9 +64,8 @@ namespace Autho.Infra.Data.Context
 
         public void UpdateState<TBaseData>(TBaseData data) where TBaseData : BaseData
         {
-            data.OnUpdate();
-
             var entry = GetDbEntry(data);
+            data.OnUpdate(GetDate(), GetLogin());
 
             if (entry != null)
             {
@@ -61,5 +73,8 @@ namespace Autho.Infra.Data.Context
                 entry.Property(x => x.CreatedDate).IsModified = false;
             }
         }
+
+        private string GetLogin() => _sessionAccessor.User?.Login ?? "System";
+        private DateTime GetDate() => _dateTimeProvider.UtcNow;
     }
 }

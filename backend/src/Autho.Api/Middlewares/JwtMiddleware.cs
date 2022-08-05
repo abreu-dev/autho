@@ -1,5 +1,6 @@
 ﻿using Autho.Application;
 using Autho.Domain.Repositories;
+using Autho.Domain.Session.Interfaces;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -12,25 +13,29 @@ namespace Autho.Api.Middlewares
         private readonly RequestDelegate _next;
         private readonly AppSettings _appSettings;
 
-        public JwtMiddleware(RequestDelegate next, IOptions<AppSettings> appSettings)
+        public JwtMiddleware(RequestDelegate next, 
+                             IOptions<AppSettings> appSettings)
         {
             _next = next;
             _appSettings = appSettings.Value;
         }
 
-        public async Task Invoke(HttpContext context, IUserRepository userRepository)
+        public async Task Invoke(HttpContext context)
         {
+            var userRepository = context.RequestServices.GetRequiredService<IUserRepository>();
+            var sessionAccessor = context.RequestServices.GetRequiredService<ISessionAccessor>();
+
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
             if (token != null)
             {
-                AttachUserToContext(context, userRepository, token);
+                AttachUserToSession(userRepository, sessionAccessor, token);
             }
 
             await _next(context);
         }
 
-        private void AttachUserToContext(HttpContext context, IUserRepository userRepository, string token)
+        private void AttachUserToSession(IUserRepository userRepository, ISessionAccessor sessionAccessor, string token)
         {
             try
             {
@@ -48,7 +53,7 @@ namespace Autho.Api.Middlewares
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 var userId = Guid.Parse(jwtToken.Claims.First(x => x.Type == "Id").Value);
 
-                context.Items["User"] = userRepository.GetWithPermissions(userId);
+                sessionAccessor.User = userRepository.GetWithPermissions(userId);
             }
             catch
             {

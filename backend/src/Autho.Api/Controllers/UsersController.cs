@@ -14,7 +14,7 @@ namespace Autho.Api.Controllers
         private readonly IAuthenticationService _authenticationService;
         private readonly ITokenService _tokenService;
 
-        public UsersController(INotificationHandler<DomainNotification> notifications, 
+        public UsersController(INotificationHandler<DomainNotification> notifications,
                                IAuthenticationService authenticationService,
                                ITokenService tokenService) : base(notifications)
         {

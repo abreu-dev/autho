@@ -16,10 +16,16 @@
             CreatedBy = "System";
         }
 
-        public void OnUpdate()
+        public void OnCreate(DateTime createdDate, string createdBy)
         {
-            UpdatedDate = DateTime.UtcNow;
-            UpdatedBy = "System";
+            CreatedDate = createdDate;
+            CreatedBy = createdBy;
+        }
+
+        public void OnUpdate(DateTime updatedDate, string updatedBy)
+        {
+            UpdatedDate = updatedDate;
+            UpdatedBy = updatedBy;
         }
     }
 }
