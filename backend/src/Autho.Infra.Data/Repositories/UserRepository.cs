@@ -21,6 +21,27 @@ namespace Autho.Infra.Data.Repositories
             _dateTimeProvider = dateTimeProvider;
         }
 
+        public bool ExistsName(Guid id, string name)
+        {
+            return _context.Query<UserData>()
+                .AsNoTracking()
+                .Any(x => x.Id != id && x.Name == name);
+        }
+
+        public bool ExistsEmail(Guid id, string email)
+        {
+            return _context.Query<UserData>()
+                .AsNoTracking()
+                .Any(x => x.Id != id && x.Email == email);
+        }
+
+        public bool ExistsLogin(Guid id, string login)
+        {
+            return _context.Query<UserData>()
+                .AsNoTracking()
+                .Any(x => x.Id != id && x.Login == login);
+        }
+
         public UserDomain? GetByLoginAndPassword(string login, string password)
         {
             var user = _context.Query<UserData>()
@@ -62,6 +83,41 @@ namespace Autho.Infra.Data.Repositories
             {
                 user.LastAccess = _dateTimeProvider.UtcNow;
                 _context.Complete();
+            }
+        }
+
+        public void UpdateUser(UserDomain domain)
+        {
+            var user = _adapter.Transform(domain);
+
+            var existingUser = _context.Query<UserData>()
+                .Where(x => x.Id == user.Id)
+                .Include(x => x.Profiles)
+                .ThenInclude(x => x.Profile)
+                .SingleOrDefault();
+
+            if (existingUser != null)
+            {
+                _context.GetDbEntry(existingUser).CurrentValues.SetValues(user);
+                _context.UpdateState(existingUser);
+
+                foreach (var existingProfile in existingUser.Profiles.ToList())
+                {
+                    if (!user.Profiles.Any(c => c.ProfileId == existingProfile.ProfileId))
+                    {
+                        existingUser.Profiles.Remove(existingProfile);
+                    }
+                }
+
+                foreach (var profile in user.Profiles)
+                {
+                    var existingPermission = existingUser.Profiles.SingleOrDefault(c => c.ProfileId == profile.ProfileId);
+
+                    if (existingPermission == null)
+                    {
+                        existingUser.Profiles.Add(profile);
+                    }
+                }
             }
         }
     }

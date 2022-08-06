@@ -1,4 +1,4 @@
-﻿using Autho.Domain.Core.Validation;
+﻿using Autho.Domain.Core.Validations.Interfaces;
 using Autho.Domain.Entities;
 
 namespace Autho.Application.Services.Interfaces

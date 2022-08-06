@@ -1,5 +1,6 @@
 ﻿using Autho.Application.Services.Interfaces;
 using Autho.Domain.Core.Validation;
+using Autho.Domain.Core.Validations.Interfaces;
 using Autho.Domain.Entities;
 using Autho.Domain.Repositories;
 using Autho.Infra.CrossCutting.Globalization.Resources;

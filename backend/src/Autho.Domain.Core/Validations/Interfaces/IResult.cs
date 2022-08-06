@@ -1,4 +1,6 @@
-﻿namespace Autho.Domain.Core.Validation
+﻿using Autho.Domain.Core.Validation;
+
+namespace Autho.Domain.Core.Validations.Interfaces
 {
     public interface IResult
     {

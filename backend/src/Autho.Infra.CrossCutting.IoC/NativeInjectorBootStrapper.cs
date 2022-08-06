@@ -9,6 +9,7 @@ using Autho.Domain.Core.Notifications;
 using Autho.Domain.Repositories;
 using Autho.Domain.Session;
 using Autho.Domain.Session.Interfaces;
+using Autho.Domain.Validations;
 using Autho.Domain.Validations.Interfaces;
 using Autho.Infra.Data.Adapters.Implementations;
 using Autho.Infra.Data.Adapters.Interfaces;
@@ -27,10 +28,12 @@ namespace Autho.Infra.CrossCutting.IoC
         {
             // Application - AppServices
             services.AddScoped<IProfileAppService, ProfileAppService>();
+            services.AddScoped<IUserAppService, UserAppService>();
 
             // Application - AppQueries
             services.AddScoped<IProfileAppQuery, ProfileAppQuery>();
             services.AddScoped<IPermissionAppQuery, PermissionAppQuery>();
+            services.AddScoped<IUserAppQuery, UserAppQuery>();
 
             // Application - Services
             services.AddScoped<IAuthenticationAppService, AuthenticationAppService>();
@@ -45,6 +48,7 @@ namespace Autho.Infra.CrossCutting.IoC
 
             // Domain - Validations
             services.AddScoped<IProfileValidation, ProfileValidation>();
+            services.AddScoped<IUserValidation, UserValidation>();
 
             // Infra - Data - Adapters
             services.AddScoped<IPermissionDataAdapter, PermissionDataAdapter>();

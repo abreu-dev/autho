@@ -1,6 +1,5 @@
 ﻿using Autho.Domain.Core.Entities;
 using Autho.Domain.Validations.Interfaces;
-using FluentValidation.Results;
 
 namespace Autho.Domain.Entities
 {
@@ -20,6 +19,10 @@ namespace Autho.Domain.Entities
         {
             Name = name;
             Permissions = permissions;
+        }
+
+        public ProfileDomain(Guid id) : base(id)
+        {
         }
 
         public void UpdateName(string name)
@@ -53,9 +56,7 @@ namespace Autho.Domain.Entities
             return Permissions.Any(x => x.Id == permission.Id);
         }
 
-        public ValidationResult ValidationResult { get; private set; }
-
-        public bool IsValid(IProfileValidation validation)
+        public virtual bool IsValid(IProfileValidation validation) 
         {
             ValidationResult = validation.Validate(this);
             return ValidationResult.IsValid;

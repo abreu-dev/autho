@@ -18,5 +18,19 @@ namespace Autho.Core.Enums
 
         [Display(Name = "PermissionView", Description = "permission-view")]
         PermissionView = 5,
+
+
+
+        [Display(Name = "UserInsert", Description = "user-insert")]
+        UserInsert = 6,
+
+        [Display(Name = "UserUpdate", Description = "user-update")]
+        UserUpdate = 7,
+
+        [Display(Name = "UserDelete", Description = "user-delete")]
+        UserDelete = 8,
+
+        [Display(Name = "UserView", Description = "user-view")]
+        UserView = 9,
     }
 }

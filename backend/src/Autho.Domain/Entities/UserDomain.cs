@@ -1,4 +1,5 @@
 ﻿using Autho.Domain.Core.Entities;
+using Autho.Domain.Validations.Interfaces;
 using Autho.Infra.CrossCutting.Globalization;
 
 namespace Autho.Domain.Entities
@@ -21,6 +22,22 @@ namespace Autho.Domain.Entities
             Password = password;
             Profiles = profiles;
             Language = language;
+        }
+
+        public UserDomain(string name, string email, string login, string password, Language language, ICollection<ProfileDomain> profiles)
+        {
+            Name = name;
+            Email = email;
+            Login = login;
+            Password = password;
+            Profiles = profiles;
+            Language = language;
+        }
+
+        public virtual bool IsValid(IUserValidation validation)
+        {
+            ValidationResult = validation.Validate(this);
+            return ValidationResult.IsValid;
         }
     }
 }
