@@ -1,4 +1,4 @@
-﻿namespace Autho.Api.Responses
+﻿namespace Autho.Api.Scope.Responses
 {
     public class ResponseError
     {

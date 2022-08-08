@@ -1,9 +1,7 @@
-﻿using Autho.Api.Filters;
+﻿using Autho.Api.Scope.Filters;
 using Autho.Application.Queries.Interfaces;
 using Autho.Application.Queries.Parameters;
 using Autho.Core.Enums;
-using Autho.Domain.Core.Notifications;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Autho.Api.Controllers
@@ -12,8 +10,7 @@ namespace Autho.Api.Controllers
     {
         private readonly IPermissionAppQuery _permissionAppQuery;
 
-        public PermissionsController(INotificationHandler<DomainNotification> notifications,
-                                     IPermissionAppQuery permissionAppQuery) : base(notifications)
+        public PermissionsController(IPermissionAppQuery permissionAppQuery)
         {
             _permissionAppQuery = permissionAppQuery;
         }

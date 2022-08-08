@@ -1,13 +1,11 @@
-﻿using Autho.Api.Filters;
+﻿using Autho.Api.Scope.Filters;
 using Autho.Application.Contracts;
 using Autho.Application.Queries.Interfaces;
 using Autho.Application.Queries.Parameters;
 using Autho.Application.Services.Interfaces;
 using Autho.Core.Enums;
 using Autho.Core.Extensions;
-using Autho.Domain.Core.Notifications;
-using Autho.Domain.Core.Validation;
-using MediatR;
+using Autho.Domain.Core.Validations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,11 +18,10 @@ namespace Autho.Api.Controllers
         private readonly IAuthenticationAppService _authenticationAppService;
         private readonly ITokenAppService _tokenAppService;
 
-        public UsersController(INotificationHandler<DomainNotification> notifications,
-                               IAuthenticationAppService authenticationAppService,
+        public UsersController(IAuthenticationAppService authenticationAppService,
                                ITokenAppService tokenAppService,
                                IUserAppQuery userAppQuery,
-                               IUserAppService userAppService) : base(notifications)
+                               IUserAppService userAppService)
         {
             _authenticationAppService = authenticationAppService;
             _tokenAppService = tokenAppService;

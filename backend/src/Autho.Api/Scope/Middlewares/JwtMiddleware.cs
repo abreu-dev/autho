@@ -6,14 +6,14 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
-namespace Autho.Api.Middlewares
+namespace Autho.Api.Scope.Middlewares
 {
     public class JwtMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly AppSettings _appSettings;
 
-        public JwtMiddleware(RequestDelegate next, 
+        public JwtMiddleware(RequestDelegate next,
                              IOptions<AppSettings> appSettings)
         {
             _next = next;

@@ -1,6 +1,6 @@
 ﻿using Autho.Domain.Core.Validations.Interfaces;
 
-namespace Autho.Domain.Core.Validation
+namespace Autho.Domain.Core.Validations
 {
     public class Result : IResult
     {

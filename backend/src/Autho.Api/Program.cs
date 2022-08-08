@@ -1,41 +1,35 @@
-using Autho.Api.Configurations;
-using Autho.Api.Middlewares;
+using Autho.Api.Scope;
+using Autho.Api.Scope.Extensions;
+using Autho.Api.Scope.Middlewares;
 using Autho.Infra.Data.Seed;
 using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// ConfigureServices
 
-builder.Services.AddControllers().AddNewtonsoftJson();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddDependencyInjectionConfiguration();
-builder.Services.AddDatabaseConfiguration(builder.Configuration);
-builder.Services.AddJwtConfiguration(builder.Configuration);
 builder.Services.AddMediatR(typeof(Program));
 
+builder.Services.AddAuthoAuthentication(builder.Configuration);
+builder.Services.AddAuthoController();
+builder.Services.AddAuthoSwagger();
+builder.Services.AddAuthoDbContext(builder.Configuration);
+
+ApiBootstrapper.Load(builder.Services);
+
+// ConfigureApp
 var app = builder.Build();
 
-app.Services.SeedData();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
+app.MapControllers();
 app.UseHttpsRedirection();
 
-app.UseAuthentication();
-app.UseAuthorization();
+app.UseAuthoAuthentication();
+app.UseAuthoSwagger();
 
 app.UseMiddleware<JwtMiddleware>();
 app.UseMiddleware<GlobalizationMiddleware>();
 
-app.MapControllers();
+app.Services.SeedData();
 
 app.Run();

@@ -56,7 +56,7 @@ namespace Autho.Domain.Entities
             return Permissions.Any(x => x.Id == permission.Id);
         }
 
-        public virtual bool IsValid(IProfileValidation validation) 
+        public virtual bool IsValid(IProfileValidation validation)
         {
             ValidationResult = validation.Validate(this);
             return ValidationResult.IsValid;

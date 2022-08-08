@@ -16,8 +16,8 @@ namespace Autho.Application.Services
         private readonly IUserValidation _userValidation;
         private readonly IMediatorHandler _mediator;
 
-        public UserAppService(IUserRepository userRepository, 
-                              IUserValidation userValidation, 
+        public UserAppService(IUserRepository userRepository,
+                              IUserValidation userValidation,
                               IMediatorHandler mediator)
         {
             _userRepository = userRepository;

@@ -1,11 +1,11 @@
 ﻿using Autho.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Autho.Api.Configurations
+namespace Autho.Api.Scope.Extensions
 {
-    public static class DatabaseConfig
+    public static class DbContextServiceCollectionExtensions
     {
-        public static void AddDatabaseConfiguration(this IServiceCollection services,
+        public static void AddAuthoDbContext(this IServiceCollection services,
                                                     IConfiguration configuration)
         {
             services.AddDbContext<AuthoContext>(options =>

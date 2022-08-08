@@ -24,7 +24,7 @@ namespace Autho.Infra.CrossCutting.IoC
 {
     public static class NativeInjectorBootStrapper
     {
-        public static void RegisterServices(IServiceCollection services)
+        public static void Load(IServiceCollection services)
         {
             // Application - AppServices
             services.AddScoped<IProfileAppService, ProfileAppService>();

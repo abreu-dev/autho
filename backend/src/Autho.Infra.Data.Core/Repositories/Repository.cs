@@ -1,7 +1,5 @@
-﻿using Autho.Core.Providers.Interfaces;
-using Autho.Domain.Core.Data;
+﻿using Autho.Domain.Core.Data;
 using Autho.Domain.Core.Entities;
-using Autho.Domain.Session.Interfaces;
 using Autho.Infra.Data.Core.Adapter;
 using Autho.Infra.Data.Core.Context;
 using Autho.Infra.Data.Core.Entities;

@@ -4,7 +4,7 @@ using Autho.Domain.Session.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Autho.Api.Filters
+namespace Autho.Api.Scope.Filters
 {
     public class AuthorizationRequirementAttribute : TypeFilterAttribute
     {

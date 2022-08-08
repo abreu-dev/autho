@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace Autho.Api.Configurations
+namespace Autho.Api.Scope.Extensions
 {
-    public static class JwtConfig
+    public static class AuthenticationServiceCollectionExtensions
     {
-        public static IServiceCollection AddJwtConfiguration(this IServiceCollection services, IConfiguration configuration)
+        public static void AddAuthoAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
             var appSettingsSection = configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -29,8 +29,12 @@ namespace Autho.Api.Configurations
                     ValidateAudience = false
                 };
             });
+        }
 
-            return services;
+        public static void UseAuthoAuthentication(this IApplicationBuilder app)
+        {
+            app.UseAuthentication();
+            app.UseAuthorization();
         }
     }
 }

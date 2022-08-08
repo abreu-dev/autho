@@ -1,7 +1,5 @@
 ﻿using Autho.Application.Services.Interfaces;
-using Autho.Domain.Core.Notifications;
-using Autho.Domain.Core.Validation;
-using MediatR;
+using Autho.Domain.Core.Validations;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Autho.Api.Controllers
@@ -10,8 +8,7 @@ namespace Autho.Api.Controllers
     {
         private readonly IHealthAppService _healthAppService;
 
-        public HealthController(INotificationHandler<DomainNotification> notifications,
-                                IHealthAppService healthAppService) : base(notifications)
+        public HealthController(IHealthAppService healthAppService)
         {
             _healthAppService = healthAppService;
         }

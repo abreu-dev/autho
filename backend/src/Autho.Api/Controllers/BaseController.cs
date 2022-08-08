@@ -1,4 +1,4 @@
-﻿using Autho.Api.Responses;
+﻿using Autho.Api.Scope.Responses;
 using Autho.Domain.Core.Notifications;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -10,12 +10,8 @@ namespace Autho.Api.Controllers
     [Authorize]
     public abstract class BaseController : ControllerBase
     {
-        protected readonly DomainNotificationHandler _notifications;
-
-        protected BaseController(INotificationHandler<DomainNotification> notifications)
-        {
-            _notifications = (DomainNotificationHandler)notifications;
-        }
+        protected DomainNotificationHandler _notifications =>
+            (DomainNotificationHandler)HttpContext.RequestServices.GetRequiredService<INotificationHandler<DomainNotification>>();
 
         protected IActionResult CustomResponse(string instance)
         {

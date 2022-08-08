@@ -1,4 +1,4 @@
-﻿namespace Autho.Domain.Core.Validation
+﻿namespace Autho.Domain.Core.Validations
 {
     public enum ResultType
     {

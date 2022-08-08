@@ -1,11 +1,9 @@
-﻿using Autho.Api.Filters;
+﻿using Autho.Api.Scope.Filters;
 using Autho.Application.Contracts;
 using Autho.Application.Queries.Interfaces;
 using Autho.Application.Queries.Parameters;
 using Autho.Application.Services.Interfaces;
 using Autho.Core.Enums;
-using Autho.Domain.Core.Notifications;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Autho.Api.Controllers
@@ -15,9 +13,8 @@ namespace Autho.Api.Controllers
         private readonly IProfileAppService _profileAppService;
         private readonly IProfileAppQuery _profileAppQuery;
 
-        public ProfilesController(INotificationHandler<DomainNotification> notifications,
-                                  IProfileAppService profileAppService,
-                                  IProfileAppQuery profileAppQuery) : base(notifications)
+        public ProfilesController(IProfileAppService profileAppService,
+                                  IProfileAppQuery profileAppQuery)
         {
             _profileAppService = profileAppService;
             _profileAppQuery = profileAppQuery;
@@ -34,7 +31,7 @@ namespace Autho.Api.Controllers
         {
             await _profileAppService.Add(creationDto);
 
-            return CustomResponse("api/profiles");
+            return NoContent();
         }
 
         [HttpPut, Route("api/profiles/{id}"), AuthorizationRequirement(Permission.ProfileUpdate)]
@@ -42,7 +39,7 @@ namespace Autho.Api.Controllers
         {
             await _profileAppService.Update(id, creationDto);
 
-            return CustomResponse("api/profiles", id);
+            return NoContent();
         }
 
         [HttpDelete, Route("api/profiles/{id}"), AuthorizationRequirement(Permission.ProfileDelete)]
@@ -50,7 +47,7 @@ namespace Autho.Api.Controllers
         {
             await _profileAppService.Remove(id);
 
-            return CustomResponse("api/profiles", id);
+            return NoContent();
         }
     }
 }

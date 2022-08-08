@@ -12,8 +12,8 @@ namespace Autho.Infra.Data.Context
         protected readonly IDateTimeProvider _dateTimeProvider;
         protected readonly ISessionAccessor _sessionAccessor;
 
-        public AuthoContext(DbContextOptions<AuthoContext> options, 
-                            IDateTimeProvider dateTimeProvider, 
+        public AuthoContext(DbContextOptions<AuthoContext> options,
+                            IDateTimeProvider dateTimeProvider,
                             ISessionAccessor sessionAccessor) : base(options)
         {
             _dateTimeProvider = dateTimeProvider;

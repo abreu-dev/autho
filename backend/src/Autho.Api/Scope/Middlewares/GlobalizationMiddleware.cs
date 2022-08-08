@@ -2,7 +2,7 @@
 using Autho.Domain.Session.Interfaces;
 using System.Globalization;
 
-namespace Autho.Api.Middlewares
+namespace Autho.Api.Scope.Middlewares
 {
     public class GlobalizationMiddleware
     {
