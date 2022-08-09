@@ -11,7 +11,7 @@ namespace Autho.Application.Services
         private readonly IAuthoContext _context;
         private readonly IGlobalizationService _globalizationService;
 
-        public HealthAppService(IAuthoContext context, 
+        public HealthAppService(IAuthoContext context,
                                 IGlobalizationService globalizationService)
         {
             _context = context;

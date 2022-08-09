@@ -1,4 +1,4 @@
-﻿using Autho.Application.Contracts;
+﻿using Autho.Application.Contracts.User;
 using Autho.Application.Services.Interfaces;
 using Autho.Domain.Core.MediatorHandler;
 using Autho.Domain.Core.Notifications;
@@ -6,7 +6,6 @@ using Autho.Domain.Entities;
 using Autho.Domain.Repositories;
 using Autho.Domain.Validations.Interfaces;
 using Autho.Infra.CrossCutting.Globalization;
-using Autho.Infra.CrossCutting.Globalization.Resources;
 using Autho.Infra.CrossCutting.Globalization.Services.Interfaces;
 
 namespace Autho.Application.Services

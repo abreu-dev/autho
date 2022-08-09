@@ -1,4 +1,6 @@
-﻿namespace Autho.Application.Contracts
+﻿using Autho.Application.Contracts.Profile;
+
+namespace Autho.Application.Contracts.User
 {
     public class UserDto
     {

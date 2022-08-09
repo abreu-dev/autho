@@ -1,4 +1,4 @@
-﻿using Autho.Application.Contracts;
+﻿using Autho.Application.Contracts.Profile;
 using Autho.Application.Queries.Parameters.Interfaces;
 using Autho.Domain.Core.Data.Pagination.Interfaces;
 

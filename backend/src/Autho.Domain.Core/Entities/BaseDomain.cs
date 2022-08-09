@@ -1,6 +1,4 @@
-﻿using FluentValidation.Results;
-
-namespace Autho.Domain.Core.Entities
+﻿namespace Autho.Domain.Core.Entities
 {
     public abstract class BaseDomain
     {

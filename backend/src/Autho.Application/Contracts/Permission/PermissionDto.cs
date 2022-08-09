@@ -1,4 +1,4 @@
-﻿namespace Autho.Application.Contracts
+﻿namespace Autho.Application.Contracts.Permission
 {
     public class PermissionDto
     {

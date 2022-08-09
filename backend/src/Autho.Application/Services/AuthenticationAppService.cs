@@ -12,7 +12,7 @@ namespace Autho.Application.Services
         private readonly IUserRepository _userRepository;
         private readonly IGlobalizationService _globalizationService;
 
-        public AuthenticationAppService(IUserRepository userRepository, 
+        public AuthenticationAppService(IUserRepository userRepository,
                                         IGlobalizationService globalizationService)
         {
             _userRepository = userRepository;

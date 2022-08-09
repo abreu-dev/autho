@@ -1,4 +1,5 @@
-﻿using Autho.Application.Contracts;
+﻿using Autho.Application.Contracts.Permission;
+using Autho.Application.Contracts.Profile;
 using Autho.Application.Queries.Interfaces;
 using Autho.Application.Queries.Parameters.Interfaces;
 using Autho.Core.Extensions;

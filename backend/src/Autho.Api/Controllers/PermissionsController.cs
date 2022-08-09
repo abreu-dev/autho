@@ -1,5 +1,5 @@
 ﻿using Autho.Api.Scope.Filters;
-using Autho.Application.Contracts;
+using Autho.Application.Contracts.Permission;
 using Autho.Application.Queries.Interfaces;
 using Autho.Application.Queries.Parameters;
 using Autho.Core.Enums;

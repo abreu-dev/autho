@@ -1,5 +1,6 @@
 ﻿using Autho.Api.Scope.Filters;
-using Autho.Application.Contracts;
+using Autho.Application.Contracts.User;
+using Autho.Application.Contracts.User.Login;
 using Autho.Application.Queries.Interfaces;
 using Autho.Application.Queries.Parameters;
 using Autho.Application.Services.Interfaces;

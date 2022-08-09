@@ -1,4 +1,4 @@
-﻿using Autho.Application.Contracts;
+﻿using Autho.Application.Contracts.Profile;
 using Autho.Application.Services.Interfaces;
 using Autho.Domain.Core.MediatorHandler;
 using Autho.Domain.Core.Notifications;

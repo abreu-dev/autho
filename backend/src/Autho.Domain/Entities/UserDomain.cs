@@ -1,5 +1,4 @@
 ﻿using Autho.Domain.Core.Entities;
-using Autho.Domain.Validations.Interfaces;
 using Autho.Infra.CrossCutting.Globalization;
 
 namespace Autho.Domain.Entities

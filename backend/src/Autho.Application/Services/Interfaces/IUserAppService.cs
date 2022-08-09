@@ -1,4 +1,4 @@
-﻿using Autho.Application.Contracts;
+﻿using Autho.Application.Contracts.User;
 
 namespace Autho.Application.Services.Interfaces
 {

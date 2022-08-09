@@ -20,10 +20,10 @@ namespace Autho.Infra.CrossCutting.Globalization.Services
 
         public IGlobalizationErrorMessage ErrorMessage(string type)
         {
-            var error = AuthoResource.ResourceManager.GetString(GetTypeAsError(type)) 
+            var error = AuthoResource.ResourceManager.GetString(GetTypeAsError(type))
                 ?? AuthoResource.MessageError;
 
-            var detail = AuthoResource.ResourceManager.GetString(GetTypeAsDetail(type)) 
+            var detail = AuthoResource.ResourceManager.GetString(GetTypeAsDetail(type))
                 ?? AuthoResource.MessageDetail;
 
             return new GlobalizationErrorMessage(type, error, detail);
