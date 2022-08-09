@@ -1,5 +1,6 @@
 ﻿using Autho.Application.Services.Interfaces;
 using Autho.Domain.Core.Validations;
+using Autho.Domain.Core.Validations.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Autho.Api.Controllers
@@ -13,7 +14,15 @@ namespace Autho.Api.Controllers
             _healthAppService = healthAppService;
         }
 
-        [HttpGet, Route("api/health")]
+        /// <summary>
+        /// Obtain the actual state of the application
+        /// </summary>
+        /// <response code="204">If the server and database are running</response>
+        /// <response code="503">If the database is unavailable</response>
+        [HttpGet]
+        [Route("api/health")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(503, Type = typeof(ICollection<IResultError>))]
         public IActionResult Get()
         {
             var result = _healthAppService.CheckHealthy();
@@ -26,7 +35,7 @@ namespace Autho.Api.Controllers
                 });
             }
 
-            return Ok();
+            return NoContent();
         }
     }
 }

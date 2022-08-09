@@ -1,7 +1,9 @@
 ﻿using Autho.Api.Scope.Filters;
+using Autho.Application.Contracts;
 using Autho.Application.Queries.Interfaces;
 using Autho.Application.Queries.Parameters;
 using Autho.Core.Enums;
+using Autho.Domain.Core.Data.Pagination.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Autho.Api.Controllers
@@ -15,7 +17,13 @@ namespace Autho.Api.Controllers
             _permissionAppQuery = permissionAppQuery;
         }
 
-        [HttpGet, Route("api/permissions"), AuthorizationRequirement(Permission.PermissionView)]
+        /// <summary>
+        /// Obtain a list of permissions
+        /// </summary>
+        [HttpGet]
+        [Route("api/permissions")]
+        [AuthorizationRequirement(Permission.PermissionView)]
+        [ProducesResponseType(200, Type = typeof(IPagedList<PermissionDto>))]
         public IActionResult Get([FromQuery] PermissionParameters parameters)
         {
             return Ok(_permissionAppQuery.GetPaged(parameters));

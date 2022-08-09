@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddMediatR(typeof(Program));
 
 builder.Services.AddAuthoAuthentication(builder.Configuration);
-builder.Services.AddAuthoController();
+builder.Services.AddAuthoControllers();
 builder.Services.AddAuthoSwagger();
 builder.Services.AddAuthoDbContext(builder.Configuration);
 

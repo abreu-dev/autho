@@ -27,11 +27,11 @@ namespace Autho.Api.Scope.Filters
 
         public BadRequestObjectResult GetBadRequestObjectResult(List<DomainNotification> notifications, string? instance)
         {
-            var response = new Response(instance);
+            var response = new BadRequestResponse(instance);
 
             notifications.ForEach(notification =>
             {
-                response.Errors.Add(new ResponseError(notification.Type, notification.Error, notification.Detail));
+                response.Errors.Add(new BadRequestResponseError(notification.Type, notification.Error, notification.Detail));
             });
 
             return new BadRequestObjectResult(response);
