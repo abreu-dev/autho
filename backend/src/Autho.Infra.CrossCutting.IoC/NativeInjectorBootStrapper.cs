@@ -11,6 +11,8 @@ using Autho.Domain.Session;
 using Autho.Domain.Session.Interfaces;
 using Autho.Domain.Validations;
 using Autho.Domain.Validations.Interfaces;
+using Autho.Infra.CrossCutting.Globalization.Services;
+using Autho.Infra.CrossCutting.Globalization.Services.Interfaces;
 using Autho.Infra.Data.Adapters.Implementations;
 using Autho.Infra.Data.Adapters.Interfaces;
 using Autho.Infra.Data.Context;
@@ -49,6 +51,9 @@ namespace Autho.Infra.CrossCutting.IoC
             // Domain - Validations
             services.AddScoped<IProfileValidation, ProfileValidation>();
             services.AddScoped<IUserValidation, UserValidation>();
+
+            // Infra - CrossCutting - Globalization
+            services.AddScoped<IGlobalizationService, GlobalizationService>();
 
             // Infra - Data - Adapters
             services.AddScoped<IPermissionDataAdapter, PermissionDataAdapter>();

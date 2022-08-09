@@ -3,17 +3,20 @@ using Autho.Domain.Core.Validations;
 using Autho.Domain.Core.Validations.Interfaces;
 using Autho.Domain.Entities;
 using Autho.Domain.Repositories;
-using Autho.Infra.CrossCutting.Globalization.Resources;
+using Autho.Infra.CrossCutting.Globalization.Services.Interfaces;
 
 namespace Autho.Application.Services
 {
     public class AuthenticationAppService : IAuthenticationAppService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IGlobalizationService _globalizationService;
 
-        public AuthenticationAppService(IUserRepository userRepository)
+        public AuthenticationAppService(IUserRepository userRepository, 
+                                        IGlobalizationService globalizationService)
         {
             _userRepository = userRepository;
+            _globalizationService = globalizationService;
         }
 
         public IResult<UserDomain> Authenticate(string login, string password)
@@ -23,7 +26,7 @@ namespace Autho.Application.Services
             if (user == null)
             {
                 return new Result<UserDomain>(ResultType.Failure,
-                    new ResultError("LoginFailed", "Login Failed", AuthoResource.LoginFailed));
+                    new ResultError(_globalizationService.ErrorMessage(_globalizationService.LoginFailed)));
             }
 
             _userRepository.UpdateLastAccess(user.Id);

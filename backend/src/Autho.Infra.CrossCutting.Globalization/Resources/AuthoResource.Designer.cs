@@ -63,9 +63,18 @@ namespace Autho.Infra.CrossCutting.Globalization.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The database is out of service.
         /// </summary>
-        public static string DatabaseUnavailable {
+        public static string DatabaseUnavailableDetail {
             get {
-                return ResourceManager.GetString("DatabaseUnavailable", resourceCulture);
+                return ResourceManager.GetString("DatabaseUnavailableDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Database unavailable.
+        /// </summary>
+        public static string DatabaseUnavailableError {
+            get {
+                return ResourceManager.GetString("DatabaseUnavailableError", resourceCulture);
             }
         }
         
@@ -75,15 +84,6 @@ namespace Autho.Infra.CrossCutting.Globalization.Resources {
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The field &apos;{0}&apos; must be unique.
-        /// </summary>
-        public static string FieldMustBeUnique {
-            get {
-                return ResourceManager.GetString("FieldMustBeUnique", resourceCulture);
             }
         }
         
@@ -99,18 +99,54 @@ namespace Autho.Infra.CrossCutting.Globalization.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The informed username or password is incorrect.
         /// </summary>
-        public static string LoginFailed {
+        public static string LoginFailedDetail {
             get {
-                return ResourceManager.GetString("LoginFailed", resourceCulture);
+                return ResourceManager.GetString("LoginFailedDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect login.
+        /// </summary>
+        public static string LoginFailedError {
+            get {
+                return ResourceManager.GetString("LoginFailedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detail.
+        /// </summary>
+        public static string MessageDetail {
+            get {
+                return ResourceManager.GetString("MessageDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string MessageError {
+            get {
+                return ResourceManager.GetString("MessageError", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to The field &apos;{0}&apos; must be informed.
         /// </summary>
-        public static string MissingValue {
+        public static string MissingValueDetail {
             get {
-                return ResourceManager.GetString("MissingValue", resourceCulture);
+                return ResourceManager.GetString("MissingValueDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field is required.
+        /// </summary>
+        public static string MissingValueError {
+            get {
+                return ResourceManager.GetString("MissingValueError", resourceCulture);
             }
         }
         
@@ -124,11 +160,29 @@ namespace Autho.Infra.CrossCutting.Globalization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The informed &apos;{0}&apos; was not found.
+        ///   Looks up a localized string similar to Teste.
         /// </summary>
         public static string NotFound {
             get {
                 return ResourceManager.GetString("NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The informed &apos;{0}&apos; was not found.
+        /// </summary>
+        public static string NotFoundDetail {
+            get {
+                return ResourceManager.GetString("NotFoundDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field not found.
+        /// </summary>
+        public static string NotFoundError {
+            get {
+                return ResourceManager.GetString("NotFoundError", resourceCulture);
             }
         }
         
@@ -147,6 +201,15 @@ namespace Autho.Infra.CrossCutting.Globalization.Resources {
         public static string Profile {
             get {
                 return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The field &apos;{0}&apos; must be unique.
+        /// </summary>
+        public static string UniqueValue {
+            get {
+                return ResourceManager.GetString("UniqueValue", resourceCulture);
             }
         }
         

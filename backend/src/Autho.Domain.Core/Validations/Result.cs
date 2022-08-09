@@ -1,4 +1,5 @@
 ﻿using Autho.Domain.Core.Validations.Interfaces;
+using Autho.Infra.CrossCutting.Globalization.Services.Interfaces;
 
 namespace Autho.Domain.Core.Validations
 {
@@ -53,6 +54,13 @@ namespace Autho.Domain.Core.Validations
             Type = type;
             Error = error;
             Detail = detail;
+        }
+
+        public ResultError(IGlobalizationErrorMessage message)
+        {
+            Type = message.Type;
+            Error = message.Error;
+            Detail = message.Detail;
         }
     }
 }

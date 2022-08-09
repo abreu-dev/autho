@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Autho.Core\Autho.Core.csproj" />
+    <ProjectReference Include="..\Autho.Infra.CrossCutting.Globalization\Autho.Infra.CrossCutting.Globalization.csproj" />
   </ItemGroup>
 
   <ItemGroup>

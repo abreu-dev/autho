@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DatabaseUnavailableDetail" xml:space="preserve">
-    <value>The database is out of service</value>
+    <value>O banco de dados está fora do ar</value>
   </data>
   <data name="DatabaseUnavailableError" xml:space="preserve">
-    <value>Database unavailable</value>
+    <value>Banco de dados indisponível</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
@@ -130,45 +130,45 @@
     <value>Login</value>
   </data>
   <data name="LoginFailedDetail" xml:space="preserve">
-    <value>The informed username or password is incorrect</value>
+    <value>O login ou senha informado está incorreto</value>
   </data>
   <data name="LoginFailedError" xml:space="preserve">
-    <value>Incorrect login</value>
+    <value>Dados incorretos</value>
   </data>
   <data name="MessageDetail" xml:space="preserve">
-    <value>Detail</value>
+    <value>Detalhes</value>
   </data>
   <data name="MessageError" xml:space="preserve">
-    <value>Error</value>
+    <value>Erro</value>
   </data>
-  <data name="MissingValueDetail" xml:space="preserve">
-    <value>The field '{0}' must be informed</value>
+  <data name="MissingValue" xml:space="preserve">
+    <value>O campo '{0}' deve ser informado</value>
   </data>
   <data name="MissingValueError" xml:space="preserve">
-    <value>Field is required</value>
+    <value>Campo obrigatório</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Name</value>
+    <value>Nome</value>
   </data>
   <data name="NotFound" xml:space="preserve">
-    <value>Teste</value>
+    <value>O '{0}' informado não foi encontrado</value>
   </data>
   <data name="NotFoundDetail" xml:space="preserve">
-    <value>The informed '{0}' was not found</value>
+    <value>O campo '{0}' não foi encontrado</value>
   </data>
   <data name="NotFoundError" xml:space="preserve">
-    <value>Field not found</value>
+    <value>Campo não encontrado</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Password</value>
+    <value>Senha</value>
   </data>
   <data name="Profile" xml:space="preserve">
-    <value>Profile</value>
+    <value>Perfil</value>
   </data>
   <data name="UniqueValue" xml:space="preserve">
-    <value>The field '{0}' must be unique</value>
+    <value>O campo '{0}' deve ser exclusivo</value>
   </data>
   <data name="User" xml:space="preserve">
-    <value>User</value>
+    <value>Usuário</value>
   </data>
 </root>

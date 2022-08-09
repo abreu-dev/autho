@@ -5,7 +5,7 @@ using Autho.Domain.Core.Notifications;
 using Autho.Domain.Entities;
 using Autho.Domain.Repositories;
 using Autho.Domain.Validations.Interfaces;
-using Autho.Infra.CrossCutting.Globalization.Resources;
+using Autho.Infra.CrossCutting.Globalization.Services.Interfaces;
 
 namespace Autho.Application.Services
 {
@@ -14,14 +14,17 @@ namespace Autho.Application.Services
         private readonly IProfileRepository _profileRepository;
         private readonly IProfileValidation _profileValidation;
         private readonly IMediatorHandler _mediator;
+        private readonly IGlobalizationService _globalizationService;
 
         public ProfileAppService(IProfileRepository profileRepository,
                                  IProfileValidation profileValidation,
-                                 IMediatorHandler mediator)
+                                 IMediatorHandler mediator,
+                                 IGlobalizationService globalizationService)
         {
             _profileRepository = profileRepository;
             _profileValidation = profileValidation;
             _mediator = mediator;
+            _globalizationService = globalizationService;
         }
 
         public async Task Add(ProfileCreationDto creationDto)
@@ -63,8 +66,8 @@ namespace Autho.Application.Services
 
             if (!_profileRepository.Exists(id))
             {
-                var message = string.Format(AuthoResource.NotFound, AuthoResource.Profile);
-                await _mediator.RaiseNotification(new DomainNotification("NotFound", "NotFound", message));
+                await _mediator.RaiseNotification(new DomainNotification(
+                    _globalizationService.ErrorMessage(_globalizationService.NotFound, _globalizationService.Profile)));
                 return;
             }
 
@@ -89,8 +92,8 @@ namespace Autho.Application.Services
         {
             if (_profileRepository.ExistsName(id, name))
             {
-                var message = string.Format(AuthoResource.FieldMustBeUnique, AuthoResource.Name);
-                await _mediator.RaiseNotification(new DomainNotification("FieldMustBeUnique", "Name - FieldMustBeUnique", message));
+                await _mediator.RaiseNotification(new DomainNotification(
+                    _globalizationService.ErrorMessage(_globalizationService.UniqueValue, _globalizationService.Name)));
                 return false;
             }
 

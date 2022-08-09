@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Autho.Infra.CrossCutting.Globalization.Services.Interfaces;
+using MediatR;
 
 namespace Autho.Domain.Core.Notifications
 {
@@ -13,6 +14,13 @@ namespace Autho.Domain.Core.Notifications
             Type = type;
             Error = error;
             Detail = detail;
+        }
+
+        public DomainNotification(IGlobalizationErrorMessage message)
+        {
+            Type = message.Type;
+            Error = message.Error;
+            Detail = message.Detail;
         }
     }
 }

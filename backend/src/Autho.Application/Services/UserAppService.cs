@@ -7,6 +7,7 @@ using Autho.Domain.Repositories;
 using Autho.Domain.Validations.Interfaces;
 using Autho.Infra.CrossCutting.Globalization;
 using Autho.Infra.CrossCutting.Globalization.Resources;
+using Autho.Infra.CrossCutting.Globalization.Services.Interfaces;
 
 namespace Autho.Application.Services
 {
@@ -15,14 +16,17 @@ namespace Autho.Application.Services
         private readonly IUserRepository _userRepository;
         private readonly IUserValidation _userValidation;
         private readonly IMediatorHandler _mediator;
+        private readonly IGlobalizationService _globalizationService;
 
         public UserAppService(IUserRepository userRepository,
                               IUserValidation userValidation,
-                              IMediatorHandler mediator)
+                              IMediatorHandler mediator,
+                              IGlobalizationService globalizationService)
         {
             _userRepository = userRepository;
             _userValidation = userValidation;
             _mediator = mediator;
+            _globalizationService = globalizationService;
         }
 
         public async Task Add(UserCreationDto creationDto)
@@ -64,8 +68,8 @@ namespace Autho.Application.Services
 
             if (!_userRepository.Exists(id))
             {
-                var message = string.Format(AuthoResource.NotFound, AuthoResource.User);
-                await _mediator.RaiseNotification(new DomainNotification("NotFound", "NotFound", message));
+                await _mediator.RaiseNotification(new DomainNotification(
+                    _globalizationService.ErrorMessage(_globalizationService.NotFound, _globalizationService.User)));
                 return;
             }
 
@@ -110,8 +114,8 @@ namespace Autho.Application.Services
         {
             if (_userRepository.ExistsName(id, name))
             {
-                var message = string.Format(AuthoResource.FieldMustBeUnique, AuthoResource.Name);
-                await _mediator.RaiseNotification(new DomainNotification("FieldMustBeUnique", "Name - FieldMustBeUnique", message));
+                await _mediator.RaiseNotification(new DomainNotification(
+                    _globalizationService.ErrorMessage(_globalizationService.UniqueValue, _globalizationService.Name)));
                 return false;
             }
 
@@ -122,8 +126,8 @@ namespace Autho.Application.Services
         {
             if (_userRepository.ExistsEmail(id, email))
             {
-                var message = string.Format(AuthoResource.FieldMustBeUnique, AuthoResource.Email);
-                await _mediator.RaiseNotification(new DomainNotification("FieldMustBeUnique", "Email - FieldMustBeUnique", message));
+                await _mediator.RaiseNotification(new DomainNotification(
+                    _globalizationService.ErrorMessage(_globalizationService.UniqueValue, _globalizationService.Email)));
                 return false;
             }
 
@@ -134,8 +138,8 @@ namespace Autho.Application.Services
         {
             if (_userRepository.ExistsLogin(id, login))
             {
-                var message = string.Format(AuthoResource.FieldMustBeUnique, AuthoResource.Login);
-                await _mediator.RaiseNotification(new DomainNotification("FieldMustBeUnique", "Login - FieldMustBeUnique", message));
+                await _mediator.RaiseNotification(new DomainNotification(
+                    _globalizationService.ErrorMessage(_globalizationService.UniqueValue, _globalizationService.Login)));
                 return false;
             }
 

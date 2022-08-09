@@ -8,7 +8,7 @@ namespace Autho.Api.Scope.Middlewares
     {
         private readonly RequestDelegate _next;
 
-        private const string DefaultLanguage = "en";
+        private const string DefaultLanguage = "pt-BR";
 
         public GlobalizationMiddleware(RequestDelegate next)
         {
@@ -18,12 +18,7 @@ namespace Autho.Api.Scope.Middlewares
         public async Task Invoke(HttpContext context)
         {
             var sessionAccessor = context.RequestServices.GetRequiredService<ISessionAccessor>();
-            var language = sessionAccessor.User?.Language.GetEnumDisplayDescription();
-
-            if (language == null)
-            {
-                language = DefaultLanguage;
-            }
+            var language = sessionAccessor.User?.Language.GetEnumDisplayDescription() ?? DefaultLanguage;
 
             Thread.CurrentThread.CurrentCulture = new CultureInfo(language);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
