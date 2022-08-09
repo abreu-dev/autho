@@ -1,9 +1,9 @@
-﻿using Autho.Domain.Entities;
-using FluentValidation;
+﻿using Autho.Domain.Core.Validations.Interfaces;
+using Autho.Domain.Entities;
 
 namespace Autho.Domain.Validations.Interfaces
 {
-    public interface IProfileValidation : IValidator<ProfileDomain>
+    public interface IProfileValidation : IDomainValidation<ProfileDomain>
     {
     }
 }

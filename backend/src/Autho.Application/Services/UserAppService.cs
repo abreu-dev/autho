@@ -34,9 +34,9 @@ namespace Autho.Application.Services
             var profiles = creationDto.Profiles.Select(x => new ProfileDomain(x.Id)).ToList();
             var user = new UserDomain(creationDto.Name, creationDto.Email, creationDto.Login, creationDto.Password, Language.EN, profiles);
 
-            if (!user.IsValid(_userValidation))
+            if (!_userValidation.IsValid(user))
             {
-                foreach (var error in user.ValidationResult.Errors)
+                foreach (var error in _userValidation.ValidationResult.Errors)
                 {
                     await _mediator.RaiseNotification(new DomainNotification(error.ErrorCode, error.CustomState.ToString() ?? "", error.ErrorMessage));
                 }
@@ -57,9 +57,9 @@ namespace Autho.Application.Services
             var profiles = creationDto.Profiles.Select(x => new ProfileDomain(x.Id)).ToList();
             var user = new UserDomain(id, creationDto.Name, creationDto.Email, creationDto.Login, creationDto.Password, Language.EN, profiles);
 
-            if (!user.IsValid(_userValidation))
+            if (!_userValidation.IsValid(user))
             {
-                foreach (var error in user.ValidationResult.Errors)
+                foreach (var error in _userValidation.ValidationResult.Errors)
                 {
                     await _mediator.RaiseNotification(new DomainNotification(error.ErrorCode, error.CustomState.ToString() ?? "", error.ErrorMessage));
                 }

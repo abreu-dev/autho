@@ -33,11 +33,5 @@ namespace Autho.Domain.Entities
             Profiles = profiles;
             Language = language;
         }
-
-        public virtual bool IsValid(IUserValidation validation)
-        {
-            ValidationResult = validation.Validate(this);
-            return ValidationResult.IsValid;
-        }
     }
 }

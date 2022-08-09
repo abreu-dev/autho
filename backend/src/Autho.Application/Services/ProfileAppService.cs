@@ -32,9 +32,9 @@ namespace Autho.Application.Services
             var permissions = creationDto.Permissions.Select(x => new PermissionDomain(x.Id)).ToList();
             var profile = new ProfileDomain(creationDto.Name, permissions);
 
-            if (!profile.IsValid(_profileValidation))
+            if (!_profileValidation.IsValid(profile))
             {
-                foreach (var error in profile.ValidationResult.Errors)
+                foreach (var error in _profileValidation.ValidationResult.Errors)
                 {
                     await _mediator.RaiseNotification(new DomainNotification(error.ErrorCode, error.CustomState.ToString() ?? "", error.ErrorMessage));
                 }
@@ -55,9 +55,9 @@ namespace Autho.Application.Services
             var permissions = creationDto.Permissions.Select(x => new PermissionDomain(x.Id)).ToList();
             var profile = new ProfileDomain(id, creationDto.Name, permissions);
 
-            if (!profile.IsValid(_profileValidation))
+            if (!_profileValidation.IsValid(profile))
             {
-                foreach (var error in profile.ValidationResult.Errors)
+                foreach (var error in _profileValidation.ValidationResult.Errors)
                 {
                     await _mediator.RaiseNotification(new DomainNotification(error.ErrorCode, error.CustomState.ToString() ?? "", error.ErrorMessage));
                 }

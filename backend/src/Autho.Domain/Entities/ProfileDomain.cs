@@ -1,5 +1,4 @@
 ﻿using Autho.Domain.Core.Entities;
-using Autho.Domain.Validations.Interfaces;
 
 namespace Autho.Domain.Entities
 {
@@ -54,12 +53,6 @@ namespace Autho.Domain.Entities
         private bool ExistsPermission(PermissionDomain permission)
         {
             return Permissions.Any(x => x.Id == permission.Id);
-        }
-
-        public virtual bool IsValid(IProfileValidation validation)
-        {
-            ValidationResult = validation.Validate(this);
-            return ValidationResult.IsValid;
         }
     }
 }

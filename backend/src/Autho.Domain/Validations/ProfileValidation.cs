@@ -1,15 +1,22 @@
-﻿using Autho.Domain.Entities;
+﻿using Autho.Domain.Core.Validations;
+using Autho.Domain.Entities;
 using Autho.Domain.Validations.Interfaces;
 using Autho.Infra.CrossCutting.Globalization.Services.Interfaces;
 using FluentValidation;
 
 namespace Autho.Domain.Validations
 {
-    public class ProfileValidation : AbstractValidator<ProfileDomain>, IProfileValidation
+    public class ProfileValidation : DomainValidation<ProfileDomain>, IProfileValidation
     {
-        public ProfileValidation(IGlobalizationService globalizationService)
+        public ProfileValidation(IGlobalizationService globalizationService) : base(globalizationService)
         {
-            var missingNameError = globalizationService.ErrorMessage(globalizationService.MissingValue, globalizationService.Name);
+            SetDomainRules();
+        }
+
+        protected override void SetDomainRules()
+        {
+            var missingNameError = _globalizationService.ErrorMessage(
+                _globalizationService.MissingValue, _globalizationService.Name);
 
             RuleFor(x => x.Name)
                 .NotEmpty()

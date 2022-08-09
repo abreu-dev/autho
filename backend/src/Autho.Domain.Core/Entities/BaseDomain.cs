@@ -5,7 +5,6 @@ namespace Autho.Domain.Core.Entities
     public abstract class BaseDomain
     {
         public Guid Id { get; private set; }
-        public ValidationResult ValidationResult { get; protected set; }
 
         protected BaseDomain()
         {
