@@ -19,8 +19,6 @@ namespace Autho.Core.Enums
         [Display(Name = "PermissionView", Description = "permission-view")]
         PermissionView = 5,
 
-
-
         [Display(Name = "UserInsert", Description = "user-insert")]
         UserInsert = 6,
 
@@ -32,5 +30,8 @@ namespace Autho.Core.Enums
 
         [Display(Name = "UserView", Description = "user-view")]
         UserView = 9,
+
+        [Display(Name = "UserIntegrationInsert", Description = "user-integration-insert")]
+        UserIntegrationInsert = 10,
     }
 }

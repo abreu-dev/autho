@@ -3,7 +3,7 @@ using Autho.Infra.Data.Adapters.Interfaces;
 using Autho.Infra.Data.Core.Adapter;
 using Autho.Infra.Data.Entities;
 
-namespace Autho.Infra.Data.Adapters.Implementations
+namespace Autho.Infra.Data.Adapters
 {
     public class ProfileDataAdapter : DataAdapter<ProfileDomain, ProfileData>, IProfileDataAdapter
     {
