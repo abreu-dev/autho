@@ -2,16 +2,27 @@
 using Autho.Application.Services.Integration.Interfaces;
 using Autho.Domain.Entities.Integration;
 using Autho.Domain.Repositories.Integration;
+using Autho.Infra.CrossCutting.Integration.Integrations.User.Interfaces;
 
 namespace Autho.Application.Services.Integration
 {
     public class IntegrationAppService : IIntegrationAppService
     {
         private readonly IIntegrationRepository _integrationRepository;
+        private readonly IIntegrationUserPipeline _integrationUserPipeline;
 
-        public IntegrationAppService(IIntegrationRepository integrationRepository)
+        public IntegrationAppService(IIntegrationRepository integrationRepository,
+                                     IIntegrationUserPipeline integrationUserPipeline)
         {
             _integrationRepository = integrationRepository;
+            _integrationUserPipeline = integrationUserPipeline;
+        }
+
+        #region User
+        public Task ProcessUser()
+        {
+            _integrationUserPipeline.Execute();
+            return Task.CompletedTask;
         }
 
         public Task Create(Guid integrationId, IEnumerable<IntegrationUserDto> integrationDtos)
@@ -33,5 +44,6 @@ namespace Autho.Application.Services.Integration
                 return new IntegrationUserDomain(integrationId, dto.Name, dto.Email, dto.Login, dto.Password, dto.Language);
             });
         }
+        #endregion
     }
 }

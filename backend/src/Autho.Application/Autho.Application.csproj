@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Autho.Domain\Autho.Domain.csproj" />
     <ProjectReference Include="..\Autho.Infra.CrossCutting.Globalization\Autho.Infra.CrossCutting.Globalization.csproj" />
+    <ProjectReference Include="..\Autho.Infra.CrossCutting.Integration\Autho.Infra.CrossCutting.Integration.csproj" />
     <ProjectReference Include="..\Autho.Infra.Data\Autho.Infra.Data.csproj" />
   </ItemGroup>
 

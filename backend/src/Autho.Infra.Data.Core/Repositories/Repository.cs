@@ -60,13 +60,6 @@ namespace Autho.Infra.Data.Core.Repositories
         {
             var data = _adapter.Transform(domain);
             _context.UpdateData(data);
-
-            var entry = _context.GetDbEntry(data);
-            if (entry != null)
-            {
-                entry.Property(x => x.CreatedBy).IsModified = false;
-                entry.Property(x => x.CreatedDate).IsModified = false;
-            }
         }
 
         public void Delete(Guid id)

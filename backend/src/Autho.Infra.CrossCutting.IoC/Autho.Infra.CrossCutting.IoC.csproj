@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Autho.Application\Autho.Application.csproj" />
+    <ProjectReference Include="..\Autho.Infra.CrossCutting.Integration\Autho.Infra.CrossCutting.Integration.csproj" />
     <ProjectReference Include="..\Autho.Infra.Data\Autho.Infra.Data.csproj" />
   </ItemGroup>
 

@@ -2,6 +2,8 @@
 {
     public enum IntegrationStatus
     {
-        None = 0
+        None = 0,
+        Started = 1,
+        Finished = 2
     }
 }

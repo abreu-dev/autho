@@ -53,8 +53,13 @@ namespace Autho.Infra.Data.Context
 
         public void UpdateData<TBaseData>(TBaseData data) where TBaseData : BaseData
         {
-            data.OnUpdate(GetDate(), GetLogin());
-            Update(data);
+            var existingData = GetDbSet<TBaseData>().SingleOrDefault(x => x.Id == data.Id);
+
+            if (existingData != null)
+            {
+                GetDbEntry(existingData).CurrentValues.SetValues(data);
+                UpdateState(existingData);
+            }
         }
 
         public void DeleteData<TBaseData>(TBaseData data) where TBaseData : BaseData

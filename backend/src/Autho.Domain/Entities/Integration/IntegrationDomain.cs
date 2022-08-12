@@ -16,5 +16,17 @@ namespace Autho.Domain.Entities.Integration
             Users = users;
             Status = IntegrationStatus.None;
         }
+
+        public void Start()
+        {
+            StartDateImport = DateTime.UtcNow;
+            Status = IntegrationStatus.Started;
+        }
+
+        public void Finish()
+        {
+            EndDateImport = DateTime.UtcNow;
+            Status = IntegrationStatus.Finished;
+        }
     }
 }

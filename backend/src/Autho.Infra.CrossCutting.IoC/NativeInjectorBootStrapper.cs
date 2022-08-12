@@ -1,4 +1,6 @@
 ﻿using Autho.Application.Queries;
+using Autho.Application.Queries.Integrations;
+using Autho.Application.Queries.Integrations.Interfaces;
 using Autho.Application.Queries.Interfaces;
 using Autho.Application.Services;
 using Autho.Application.Services.Integration;
@@ -16,6 +18,7 @@ using Autho.Domain.Validations;
 using Autho.Domain.Validations.Interfaces;
 using Autho.Infra.CrossCutting.Globalization.Services;
 using Autho.Infra.CrossCutting.Globalization.Services.Interfaces;
+using Autho.Infra.CrossCutting.Integration.IoC;
 using Autho.Infra.Data.Adapters;
 using Autho.Infra.Data.Adapters.Integration;
 using Autho.Infra.Data.Adapters.Integration.Interfaces;
@@ -43,8 +46,7 @@ namespace Autho.Infra.CrossCutting.IoC
             services.AddScoped<IProfileAppQuery, ProfileAppQuery>();
             services.AddScoped<IPermissionAppQuery, PermissionAppQuery>();
             services.AddScoped<IUserAppQuery, UserAppQuery>();
-
-            // Application - Services
+            services.AddScoped<IIntegrationAppQuery, IntegrationAppQuery>();
             services.AddScoped<IAuthenticationAppService, AuthenticationAppService>();
             services.AddScoped<ITokenAppService, TokenAppService>();
             services.AddScoped<IHealthAppService, HealthAppService>();
@@ -62,11 +64,13 @@ namespace Autho.Infra.CrossCutting.IoC
             // Infra - CrossCutting - Globalization
             services.AddScoped<IGlobalizationService, GlobalizationService>();
 
+            // Infra - CrossCutting - Integration
+            IntegrationBootStrapper.Load(services);
+
             // Infra - Data - Adapters
             services.AddScoped<IPermissionDataAdapter, PermissionDataAdapter>();
             services.AddScoped<IProfileDataAdapter, ProfileDataAdapter>();
             services.AddScoped<IUserDataAdapter, UserDataAdapter>();
-
             services.AddScoped<IIntegrationDataAdapter, IntegrationDataAdapter>();
             services.AddScoped<IIntegrationUserDataAdapter, IntegrationUserDataAdapter>();
 
@@ -80,7 +84,6 @@ namespace Autho.Infra.CrossCutting.IoC
             services.AddScoped<IPermissionRepository, PermissionRepository>();
             services.AddScoped<IProfileRepository, ProfileRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
-
             services.AddScoped<IIntegrationRepository, IntegrationRepository>();
 
             // Providers
