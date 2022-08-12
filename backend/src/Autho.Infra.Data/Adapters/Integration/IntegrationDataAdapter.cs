@@ -15,16 +15,20 @@ namespace Autho.Infra.Data.Adapters.Integration
             _integrationUserDataAdapter = integrationUserDataAdapter;
         }
 
-        public override IntegrationDomain Transform(IntegrationData data)
+        public override IntegrationDomain? Transform(IntegrationData? data)
         {
+            if (data == null) return null;
+
             var users = data.Users == null ? new List<IntegrationUserDomain>()
                 : _integrationUserDataAdapter.Transform(data.Users).ToList();
 
             return new IntegrationDomain(data.Id, users);
         }
 
-        public override IntegrationData Transform(IntegrationDomain domain)
+        public override IntegrationData? Transform(IntegrationDomain? domain)
         {
+            if (domain == null) return null;
+
             var users = domain.Users == null ? new List<IntegrationUserData>()
                 : _integrationUserDataAdapter.Transform(domain.Users).ToList();
 

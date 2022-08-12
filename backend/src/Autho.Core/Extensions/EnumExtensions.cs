@@ -22,5 +22,24 @@ namespace Autho.Core.Extensions
                 .GetCustomAttribute<DisplayAttribute>()?
                 .GetDescription();
         }
+
+        public static T? GetEnumValueFromDescription<T>(string description) where T : Enum
+        {
+            foreach (var item in Enum.GetValues(typeof(T)))
+            {
+                var itemEnum = (T)item;
+
+                if (itemEnum != null)
+                {
+                    var itemEnumDescription = itemEnum.GetEnumDisplayDescription();
+                    if (itemEnumDescription == description)
+                    {
+                        return itemEnum;
+                    }
+                }
+            }
+
+            return default;
+        }
     }
 }

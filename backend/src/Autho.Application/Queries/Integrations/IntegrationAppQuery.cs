@@ -24,7 +24,7 @@ namespace Autho.Application.Queries.Integrations
                        select new IntegrationDto()
                        {
                            Id = integration.Id,
-                           Status = integration.Status.GetEnumDisplayName() ?? "",
+                           Status = integration.Status.GetEnumDisplayName() ?? string.Empty,
                            StartDateImport = integration.StartDateImport,
                            EndDateImport = integration.EndDateImport
                        }).FirstOrDefault();

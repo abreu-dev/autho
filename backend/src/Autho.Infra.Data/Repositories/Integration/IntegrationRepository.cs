@@ -20,15 +20,13 @@ namespace Autho.Infra.Data.Repositories.Integration
 
         public IntegrationDomain? FirstPendingIntegrationUser()
         {
-            var integration = _context.Query<IntegrationData>()
+            var data = _context.Query<IntegrationData>()
                 .Include(x => x.Users)
                 .Where(x => x.Users.Any() && x.Status == IntegrationStatus.None)
                 .OrderByDescending(x => x.CreatedDate)
                 .FirstOrDefault();
 
-            if (integration == null) return null;
-
-            return _adapter.Transform(integration);
+            return _adapter.Transform(data);
         }
     }
 }

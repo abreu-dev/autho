@@ -7,10 +7,10 @@ namespace Autho.Infra.Data.Core.Adapter
         where TBaseDomain : BaseDomain
         where TBaseData : BaseData
     {
-        TBaseDomain Transform(TBaseData data);
+        TBaseDomain? Transform(TBaseData? data);
         IEnumerable<TBaseDomain> Transform(IEnumerable<TBaseData> datas);
 
-        TBaseData Transform(TBaseDomain domain);
+        TBaseData? Transform(TBaseDomain? domain);
         IEnumerable<TBaseData> Transform(IEnumerable<TBaseDomain> domains);
     }
 }

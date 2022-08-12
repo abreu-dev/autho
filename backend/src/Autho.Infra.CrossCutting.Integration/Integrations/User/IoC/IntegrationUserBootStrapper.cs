@@ -1,6 +1,7 @@
-﻿using Autho.Infra.CrossCutting.Integration.Integrations.User.Interfaces;
-using Autho.Infra.CrossCutting.Integration.Integrations.User.Pipeline;
+﻿using Autho.Infra.CrossCutting.Integration.Integrations.User.Pipeline;
+using Autho.Infra.CrossCutting.Integration.Integrations.User.Pipeline.Interfaces;
 using Autho.Infra.CrossCutting.Integration.Integrations.User.Steps;
+using Autho.Infra.CrossCutting.Integration.Integrations.User.Steps.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Autho.Infra.CrossCutting.Integration.Integrations.User.IoC

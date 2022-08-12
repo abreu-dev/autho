@@ -37,7 +37,7 @@ namespace Autho.Application.Services
             {
                 foreach (var error in _userValidation.ValidationResult.Errors)
                 {
-                    await _mediator.RaiseNotification(new DomainNotification(error.ErrorCode, error.CustomState.ToString() ?? "", error.ErrorMessage));
+                    await _mediator.RaiseNotification(new DomainNotification(error.ErrorCode, error.CustomState.ToString() ?? string.Empty, error.ErrorMessage));
                 }
                 return;
             }

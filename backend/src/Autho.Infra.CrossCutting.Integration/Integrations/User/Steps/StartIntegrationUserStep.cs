@@ -1,7 +1,7 @@
 ﻿using Autho.Domain.Entities.Integration;
 using Autho.Domain.Repositories.Integration;
-using Autho.Infra.CrossCutting.Integration.Engine.Steps;
-using Autho.Infra.CrossCutting.Integration.Integrations.User.Interfaces;
+using Autho.Infra.CrossCutting.Integration.Engine;
+using Autho.Infra.CrossCutting.Integration.Integrations.User.Steps.Interfaces;
 
 namespace Autho.Infra.CrossCutting.Integration.Integrations.User.Steps
 {
@@ -14,7 +14,7 @@ namespace Autho.Infra.CrossCutting.Integration.Integrations.User.Steps
             _repository = repository;
         }
 
-        public async Task<IntegrationDomain?> Execute(PipelineStart data)
+        public Task<IntegrationDomain?> Execute(PipelineJobStart data)
         {
             var integration = _repository.FirstPendingIntegrationUser();
 
@@ -23,7 +23,7 @@ namespace Autho.Infra.CrossCutting.Integration.Integrations.User.Steps
                 integration.Start();
             }
 
-            return integration;
+            return Task.FromResult(integration);
         }
     }
 }

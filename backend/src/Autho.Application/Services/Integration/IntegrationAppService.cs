@@ -2,7 +2,7 @@
 using Autho.Application.Services.Integration.Interfaces;
 using Autho.Domain.Entities.Integration;
 using Autho.Domain.Repositories.Integration;
-using Autho.Infra.CrossCutting.Integration.Integrations.User.Interfaces;
+using Autho.Infra.CrossCutting.Integration.Integrations.User.Pipeline.Interfaces;
 
 namespace Autho.Application.Services.Integration
 {

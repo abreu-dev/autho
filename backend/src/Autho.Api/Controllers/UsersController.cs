@@ -117,7 +117,7 @@ namespace Autho.Api.Controllers
                     Name = result.Item.Name,
                     Email = result.Item.Email,
                     Login = result.Item.Login,
-                    Language = result.Item.Language.GetEnumDisplayDescription() ?? ""
+                    Language = result.Item.Language.GetEnumDisplayDescription() ?? string.Empty
                 }
             });
         }

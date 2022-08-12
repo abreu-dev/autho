@@ -35,7 +35,7 @@ namespace Autho.Application.Queries
                             Name = user.Name,
                             Email = user.Email,
                             Login = user.Login,
-                            Language = user.Language.GetEnumDisplayName() ?? "",
+                            Language = user.Language.GetEnumDisplayName() ?? string.Empty,
                             Profiles = user.Profiles.Select(userProfile => new ProfileDto()
                             {
                                 Id = userProfile.Profile.Id,

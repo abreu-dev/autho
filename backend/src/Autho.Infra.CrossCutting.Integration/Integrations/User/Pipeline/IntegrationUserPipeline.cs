@@ -1,17 +1,21 @@
-﻿using Autho.Infra.CrossCutting.Integration.Engine.Steps;
-using Autho.Infra.CrossCutting.Integration.Integrations.User.Interfaces;
+﻿using Autho.Infra.CrossCutting.Integration.Engine;
+using Autho.Infra.CrossCutting.Integration.Engine.Builder;
+using Autho.Infra.CrossCutting.Integration.Engine.Pipeline;
+using Autho.Infra.CrossCutting.Integration.Engine.Steps.Interfaces;
+using Autho.Infra.CrossCutting.Integration.Integrations.User.Pipeline.Interfaces;
+using Autho.Infra.CrossCutting.Integration.Integrations.User.Steps.Interfaces;
 
 namespace Autho.Infra.CrossCutting.Integration.Integrations.User.Pipeline
 {
-    public class IntegrationUserPipeline : IIntegrationUserPipeline
+    public class IntegrationUserPipeline : PipelineJob, IIntegrationUserPipeline
     {
         private readonly IStartIntegrationUserStep _startStep;
         private readonly IProcessIntegrationUserStep _processStep;
         private readonly IFinishIntegrationUserStep _finishStep;
 
         public IntegrationUserPipeline(
-            IStartIntegrationUserStep startStep, 
-            IProcessIntegrationUserStep processStep, 
+            IStartIntegrationUserStep startStep,
+            IProcessIntegrationUserStep processStep,
             IFinishIntegrationUserStep finishStep)
         {
             _startStep = startStep;
@@ -19,11 +23,13 @@ namespace Autho.Infra.CrossCutting.Integration.Integrations.User.Pipeline
             _finishStep = finishStep;
         }
 
-        public async Task Execute()
+        protected override IPipelineJobStep<PipelineJobStart, PipelineJobFinish> Build()
         {
-            var startStepResult = await _startStep.Execute(PipelineStart.Instance);
-            var processStepResult = await _processStep.Execute(startStepResult);
-            await _finishStep.Execute(processStepResult);
+            return new PipelineJobBuilder()
+                .WithStep(_startStep)
+                .WithStep(_processStep)
+                .WithStep(_finishStep)
+                .Build();
         }
     }
 }

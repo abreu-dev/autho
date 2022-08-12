@@ -18,7 +18,7 @@ using Autho.Domain.Validations;
 using Autho.Domain.Validations.Interfaces;
 using Autho.Infra.CrossCutting.Globalization.Services;
 using Autho.Infra.CrossCutting.Globalization.Services.Interfaces;
-using Autho.Infra.CrossCutting.Integration.IoC;
+using Autho.Infra.CrossCutting.Integration;
 using Autho.Infra.Data.Adapters;
 using Autho.Infra.Data.Adapters.Integration;
 using Autho.Infra.Data.Adapters.Integration.Interfaces;
